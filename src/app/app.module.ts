@@ -5,9 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturesModule } from './pages/features/features.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +24,19 @@ import { HttpClientModule } from '@angular/common/http';
     RouterOutlet,
     FeaturesModule,
     HttpClientModule,
-    RouterModule 
+    RouterModule,
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   bootstrap: [AppComponent],
+  providers: [
+    provideAnimationsAsync()
+  ],
 })
 export class AppModule { }

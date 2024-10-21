@@ -1,2 +1,42 @@
 <p>client-subscription works!</p>
-<a [routerLink]="['/success']">Submit</a>
+
+<div class="conference-container">
+    <div class="conference-header">
+      <h1>{{'medicalconfrenec' | translate}}</h1>
+      <p>أهلاً بكم في مؤتمرنا الطبي السنوي. هنا تجدون أحدث المعلومات والتقنيات الطبية.</p>
+    </div>
+  
+    <div class="conference-details">
+      <h2>تفاصيل المؤتمر</h2>
+      <ul>
+        <li>التاريخ: 10 ديسمبر 2024</li>
+        <li>المكان: القاهرة، مصر</li>
+        <li>المتحدثون: نخبة من الأطباء والعلماء</li>
+      </ul>
+    </div>
+  
+    <div class="subscribe-section">
+      <button mat-raised-button color="primary" (click)="subscribe()">اشترك الآن</button>
+      <button mat-raised-button [routerLink]="['/success']">Submit</button>
+    </div>
+  </div>
+  
+  <!-- Dialog for subscription -->
+  <ng-template #subscribeDialog>
+    <h1 mat-dialog-title>اشترك في المؤتمر</h1>
+    <div mat-dialog-content>
+      <p>يرجى إدخال معلوماتك للاشتراك.</p>
+      <mat-form-field appearance="fill">
+        <mat-label>الاسم</mat-label>
+        <input matInput [(ngModel)]="userName">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>البريد الإلكتروني</mat-label>
+        <input matInput [(ngModel)]="userEmail">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeDialog()">إلغاء</button>
+      <button mat-button (click)="confirmSubscription()">تأكيد</button>
+    </div>
+  </ng-template>

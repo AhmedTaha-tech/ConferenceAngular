@@ -1,0 +1,20 @@
+.conference-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .conference-header {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .conference-details {
+    text-align: left;
+    margin: 20px;
+  }
+  
+  .subscribe-section {
+    margin-top: 20px;
+  }

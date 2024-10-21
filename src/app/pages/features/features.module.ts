@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FeaturesRoutingModule } from './features-routing.module';
 import { ClientSubscriptionModule } from './clientsubscription/client-subscription.module';
 import { HomeComponent } from './home/home.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -14,6 +15,7 @@ import { HomeComponent } from './home/home.component';
     RouterModule,
     FeaturesRoutingModule,
     ClientSubscriptionModule,
+    TranslateModule 
   ]
 })
 export class FeaturesModule { }
