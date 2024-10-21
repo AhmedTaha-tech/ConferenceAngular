@@ -10,6 +10,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { DashboardModuleModule } from './pages/features/dashboard/dashboard-module.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -23,9 +26,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     RouterOutlet,
     FeaturesModule,
+    DashboardModuleModule,
     HttpClientModule,
     RouterModule,
     FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -33,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    
   ],
   bootstrap: [AppComponent],
   providers: [

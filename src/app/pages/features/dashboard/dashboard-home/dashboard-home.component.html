@@ -1,0 +1,81 @@
+Works
+<form [formGroup]="searchForm" (ngSubmit)="onSearchForm()">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input id="firstName" formControlName="firstName" type="text">
+    </div>
+  
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" formControlName="lastName" type="text">
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email">
+    </div>
+  
+    <div>
+      <label for="createdAt">Created At:</label>
+      <input id="createdAt" formControlName="createdAt" type="date">
+    </div>
+  
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" formControlName="phoneNumber" type="text">
+    </div>
+  
+    <button mat-raised-button type="button" (click)="exportToPDF()">Export to PDF</button>
+    <button mat-raised-button type="submit">Search</button>
+  </form>
+
+
+<div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+  <!-- First Name Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Phone Number Column -->
+  <ng-container matColumnDef="phoneNumber">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+  </ng-container>
+
+  <!-- Created At Column -->
+  <ng-container matColumnDef="createdAt">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Created At </th>
+    <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+  </ng-container>
+
+  <!-- Header and Row Declarations -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  
+    <!-- Pagination Controls -->
+    <mat-paginator [length]="totalRecords"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator> -->
+
+
+  </div>
