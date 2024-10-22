@@ -65,7 +65,6 @@ export class DashboardHomeComponent implements OnInit {
       const preparedData = this.utility.prepareFormData(searchCriteria);
       console.log('Search criteria:', searchCriteria);
       this.fetchData(0, 10,preparedData.firstName,preparedData.lastName,preparedData.email,preparedData.phoneNumber,preparedData.createdAt);
-
       // const filterValue = this.searchForm.value;
       // this.dataSource.filter = JSON.stringify(filterValue);
     }
@@ -76,9 +75,6 @@ export class DashboardHomeComponent implements OnInit {
       const preparedData = this.utility.prepareFormData(searchCriteria);
       console.log('Search criteria:', searchCriteria);
       this.GetClientsSubscribedReport(preparedData.firstName,preparedData.lastName,preparedData.email,preparedData.phoneNumber,preparedData.createdAt);
-
-      // const filterValue = this.searchForm.value;
-      // this.dataSource.filter = JSON.stringify(filterValue);
     }
   }
   GetClientsSubscribedReport(firstName? : string|null , lastName?: string|null ,email?:string|null, phoneNumber?:string|null, createdAt?:string|null): void {

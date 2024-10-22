@@ -1,39 +1,53 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ClientSubscriptionService } from '../../../../services/client-subscription.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-subscription',
   templateUrl: './client-subscription.component.html',
   styleUrl: './client-subscription.component.css'
 })
-export class ClientSubscriptionComponent {
-  userName: string = '';
-  userEmail: string = '';
-  @ViewChild('subscribeDialog') subscribeDialog!: TemplateRef<any>;
+export class ClientSubscriptionComponent implements OnInit{
+  addForm!: FormGroup;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private fb: FormBuilder, private clientSubscriptService: ClientSubscriptionService,private router: Router) {}
 
-  // Method to open the subscription dialog
-  subscribe() {
-    const dialogRef = this.dialog.open(this.subscribeDialog);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Handle subscription logic
-        console.log('User subscribed:', this.userName, this.userEmail);
-      }
+  ngOnInit(): void {
+    this.addForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', Validators.required]
     });
   }
 
-  // Method to close dialog
-  closeDialog() {
-    this.dialog.closeAll();
+  onSubmit() {
+    if (this.addForm.valid) {
+      this.clientSubscriptService.AddConferenceSubscription(this.addForm.value).subscribe(
+        response => {
+          if(response.status_code==200){
+            console.log('User added successfully!', response);
+            this.router.navigate(['/success']);}
+          else
+            this.router.navigate(['/error']);
+          },
+        error => {
+          console.error('Error adding user:', error);
+          this.router.navigate(['/error']);
+        }
+      );
+    }
+    else
+    this.checkFormErrors(); 
   }
-
-  // Method to confirm subscription
-  confirmSubscription() {
-    // Add your subscription logic here
-    console.log('Subscribed:', this.userName, this.userEmail);
-    this.dialog.closeAll();
+  checkFormErrors() {
+    Object.keys(this.addForm.controls).forEach(key => {
+      const controlErrors = this.addForm.get(key)?.errors;
+      if (controlErrors) {
+        console.log(`Error in ${key}:`, controlErrors);
+      }
+    });
   }
 }

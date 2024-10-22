@@ -13,7 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DashboardModuleModule } from './pages/features/dashboard/dashboard-module.module';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -33,6 +35,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
+    MatButtonModule,
+    MatFormFieldModule, 
+    MatSelectModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -5,7 +5,8 @@ import { FeaturesRoutingModule } from './features-routing.module';
 import { ClientSubscriptionModule } from './clientsubscription/client-subscription.module';
 import { HomeComponent } from './home/home.component';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule,
     FeaturesRoutingModule,
     ClientSubscriptionModule,
-    TranslateModule 
+    TranslateModule,
+    MatCardModule, 
+    MatButtonModule
   ]
 })
 export class FeaturesModule { }

@@ -1,3 +1,20 @@
-<button [routerLink]="['/clientsubscription']">{{ 'subscribe' | translate }}</button>
 <button [routerLink]="['/dashboard']">{{ 'dashboard' | translate }}</button>
-<p>home works!</p>
+
+<div class="container">
+    <mat-card>
+      <div class="content">
+        <div class="left-section">
+          <img src="assets/doctor.png" alt="Doctor" class="doctor-image" />
+        </div>
+        <div class="right-section">
+          <h1>كل ما نهتم به هو رعاية صحتك لتكون دائماً في أفضل حال</h1>
+          <p>
+            لوريم ايبسوم هو نص شكلي (بمعنى أن الغاية هي الشكل وليس
+            المحتوى) ويُستخدم في صناعات الطباعة ودور النشر. كان لوريم ايبسوم ولايزال
+            المعيار للنص الشكلي منذ القرن الخامس عشر.
+          </p>
+          <button mat-raised-button color="primary" class="cta-button" [routerLink]="['/clientsubscription']">{{ 'subscribe' | translate }}</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>

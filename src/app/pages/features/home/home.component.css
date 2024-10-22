@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  mat-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left-section {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .right-section {
+    flex: 2;
+    text-align: right;
+  }
+  
+  .doctor-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2a9d8f;
+  }
+  
+  p {
+    margin: 15px 0;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .cta-button {
+    margin-top: 20px;
+  }

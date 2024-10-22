@@ -1,42 +1,39 @@
-<p>client-subscription works!</p>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName" placeholder="Enter first name">
+    <mat-error *ngIf="addForm.get('firstName')?.hasError('required')">
+      First name is required
+    </mat-error>
+  </mat-form-field>
 
-<div class="conference-container">
-    <div class="conference-header">
-      <h1>{{'medicalconfrenec' | translate}}</h1>
-      <p>أهلاً بكم في مؤتمرنا الطبي السنوي. هنا تجدون أحدث المعلومات والتقنيات الطبية.</p>
-    </div>
-  
-    <div class="conference-details">
-      <h2>تفاصيل المؤتمر</h2>
-      <ul>
-        <li>التاريخ: 10 ديسمبر 2024</li>
-        <li>المكان: القاهرة، مصر</li>
-        <li>المتحدثون: نخبة من الأطباء والعلماء</li>
-      </ul>
-    </div>
-  
-    <div class="subscribe-section">
-      <button mat-raised-button color="primary" (click)="subscribe()">اشترك الآن</button>
-      <button mat-raised-button [routerLink]="['/success']">Submit</button>
-    </div>
-  </div>
-  
-  <!-- Dialog for subscription -->
-  <ng-template #subscribeDialog>
-    <h1 mat-dialog-title>اشترك في المؤتمر</h1>
-    <div mat-dialog-content>
-      <p>يرجى إدخال معلوماتك للاشتراك.</p>
-      <mat-form-field appearance="fill">
-        <mat-label>الاسم</mat-label>
-        <input matInput [(ngModel)]="userName">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>البريد الإلكتروني</mat-label>
-        <input matInput [(ngModel)]="userEmail">
-      </mat-form-field>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button (click)="closeDialog()">إلغاء</button>
-      <button mat-button (click)="confirmSubscription()">تأكيد</button>
-    </div>
-  </ng-template>
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName" placeholder="Enter last name">
+    <mat-error *ngIf="addForm.get('lastName')?.hasError('required')">
+      Last name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Enter email" type="email">
+    <mat-error *ngIf="addForm.get('email')?.hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="addForm.get('email')?.hasError('email')">
+      Please enter a valid email
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phoneNumber" placeholder="Enter phone number">
+    <mat-error *ngIf="addForm.get('phoneNumber')?.hasError('required')">
+      Phone number is required
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Add User</button>
+  <!-- <button mat-raised-button color="primary" type="submit" [disabled]="addForm.invalid">Add User</button> -->
+</form>
