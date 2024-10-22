@@ -1,4 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+/*Start Global */
+@font-face {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  src: url(assets/font/IBMPlexSansArabic-Regular.ttf);
+}
+* {
+  box-sizing: border-box;
+}
+*:not(img):not(svg):not([class*="icon"]):not([class*="fa"]) {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+:root {
+  /* color */
+  --primary-color: #20cb89;
+  --primary-color-900: #17be7e;
+  --primary-color-active: #08aa6b;
+  --disabled-bg-color: #d3d3d3;
+  --disabled-color: #8a8a8a;
+  --color-900: #121212;
+  /* shadows */
+  --shadow-sm: 0px 4px 20.3px 0px rgba(0, 0, 0, 0.1);
+  /* rounded */
+  --rounded-xl: 2rem;
+  --rounded-lg: 1.5rem;
+}
+.btn.btn-primary {
+  --bs-btn-bg: var(--primary-color);
+  --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-bg: var(--primary-color-900);
+  --bs-btn-hover-border-color: var(--primary-color-900);
+  --bs-btn-active-bg: var(--primary-color-active);
+  --bs-btn-active-border-color: var(--primary-color-active);
+  --bs-btn-active-shadow: none;
+  --bs-btn-disabled-color: var(--disabled-color);
+  --bs-btn-disabled-bg: var(--disabled-bg-color);
+  --bs-btn-disabled-border-color: var(--disabled-bg-color);
+}
+.btn.btn-lang {
+  color: var(--primary-color);
+  font-size: 1rem;
+  text-align: center;
+}
+.btn.btn-lg {
+  padding-block: 0.875rem;
+  font-weight: bold;
+}
+/*End Global */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Start auth*/
+.auth-continer {
+  min-height: 100vh;
+  background-color: var(--bs-white);
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 3rem;
+  .auth-box {
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--rounded-xl);
+    background-color: var(--bs-white);
+    .img-container {
+      height: 100%;
+      img {
+        border-radius: var(--rounded-lg);
+      }
+    }
+    .form-box {
+      .logo {
+        margin-bottom: 1.5rem;
+      }
+      .auth-title {
+        color: var(--color-900);
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+/* End auth*/
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+/* Font color */
+input.mat-input-element {
+  color: white;
+}
