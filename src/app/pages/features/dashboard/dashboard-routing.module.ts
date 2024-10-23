@@ -5,6 +5,7 @@ import { DashboardLoginComponent } from './dashboard-login/dashboard-login.compo
 
 const routes: Routes = [
   { path: '',component: DashboardHomeComponent},
+  { path: 'dashoardhome',component: DashboardHomeComponent},
   { path: 'dashoardlogin', component: DashboardLoginComponent },
 ];
 
