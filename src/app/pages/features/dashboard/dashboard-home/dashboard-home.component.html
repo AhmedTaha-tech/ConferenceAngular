@@ -68,13 +68,13 @@
 </table>
   
     <!-- Pagination Controls -->
-    <mat-paginator [length]="totalRecords"
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 25, 100]"
-                   (page)="onPageChange($event)">
+     {{totalRecords}}
+    <mat-paginator 
+        #paginator
+        [length]="totalRecords"
+        (page)="pageEvent = $event; onPaginateChange($event)"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        showFirstLastButtons>
     </mat-paginator>
-
-    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator> -->
-
-
   </div>
