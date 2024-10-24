@@ -8,11 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from '../dashboard/dashboard-routing.module';
 import { MatSelectModule } from '@angular/material/select';
 import { SubscriptionSuccessComponent } from './subscription-success/subscription-success.component';
+import { HttpLoaderFactory } from '../../../app.module';
 
 @NgModule({
   declarations: [ClientSubscriptionComponent,SubscriptionSuccessComponent, SubscriptionErrorComponent],
@@ -33,7 +34,14 @@ import { SubscriptionSuccessComponent } from './subscription-success/subscriptio
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule, 
-    MatSelectModule
+    MatSelectModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ]
 })
 export class ClientSubscriptionModule { }

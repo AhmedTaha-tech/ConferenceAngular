@@ -1,6 +1,26 @@
 {
-    "welcome": "Welcome to our website!",
-    "subscribe": "Subscribe Now",
-    "dashboard": "Dashboard",
-    "medicalconfrenec" : "Medical Confrence"
-  }
+  "ClientSubscription":{
+    "AddClientSubscription":"Client Subscription",
+    "FirstName":"First Name",
+    "Enterfirstname" : "Enter First Name",
+    "Firstnameisrequired" : "First Name is required",
+    
+    "LastName":"Last Name",
+    "Enterlastname" : "Enter Lastt Name",
+    "Lastnameisrequired" : "Last Nameis required",
+    
+    "Email":"Email",
+    "Enteremail" : "Enter Email",
+    "Emailisrequired" : "Email is required",
+    "Pleaseenteravalidemail" : "Please enter a valid email",
+    
+    "PhoneNumber":"Phone Number",
+    "Enterphonenumber" : "Enter Phone Number",
+    "PhoneNumberisrequired" : "Phone Number is required",
+    "subscribe": "Subscribe"
+  },
+  "header":{
+    "selectedLanguage":"العربية"
+  },
+  "dashboard": "Dashboard"
+}

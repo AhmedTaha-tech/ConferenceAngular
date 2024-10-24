@@ -1,6 +1,25 @@
 {
-  "welcome": "مرحبًا بكم في موقعنا!",
-  "subscribe": "اشترك الآن",
-  "dashboard": "لوحة التحكم",
-  "medicalconfrenec" : "مؤتمر طبي 2024"
+  "ClientSubscription":{
+"AddClientSubscription":"التسجيل فى المؤتمر",
+"FirstName":"الاسم الاول",
+"Enterfirstname" : "ادخل الاسم الاول",
+"Firstnameisrequired" : "الاسم الاول مطلوب",
+
+"LastName":"الاسم الاخير",
+"Enterlastname" : "ادخل الاسم الاخير",
+"Lastnameisrequired" : "الاسم الاول مطلوب",
+
+"Email":"الايميل",
+"Enteremail" : "ادخل الايميل",
+"Emailisrequired" : "الايميل مطلوب",
+"Pleaseenteravalidemail" : "من فضلك ادخل صيغة ايميل صحيحة",
+
+"PhoneNumber":"رقم الجوال",
+"Enterphonenumber" : "ادخل رقم الجوال",
+"PhoneNumberisrequired" : "رقم الجوال مطلوب",
+"subscribe": "اشتراك"
+  },
+  "header":{
+"selectedLanguage":"English"
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientSubscriptionService } from '../../../../services/client-subscription.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-client-subscription',
@@ -33,12 +34,22 @@ export class ClientSubscriptionComponent implements OnInit {
   ];
 
   selectedCountryCode: string = this.countries[0].dialCode; // Default selected country code
-
+  selectedLanguage: any = '';
   constructor(
     private fb: FormBuilder,
     private clientSubscriptService: ClientSubscriptionService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService
+  ) {
+    this.selectedLanguage = localStorage.getItem('selectedLanguage');
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      this.selectedLanguage = savedLanguage;
+      this.translate.use(savedLanguage);
+    } else {
+      this.translate.setDefaultLang('en');
+    }
+  }
 
   ngOnInit(): void {
     this.addForm = this.fb.group({
@@ -67,14 +78,14 @@ export class ClientSubscriptionComponent implements OnInit {
           (response) => {
             if (response.status_code === 200) {
               console.log('User added successfully!', response);
-              this.router.navigate(['/success']);
+              this.router.navigate(['/clientsubscription/success']);
             } else {
-              this.router.navigate(['/error']);
+              this.router.navigate(['/clientsubscription/error']);
             }
           },
           (error) => {
             console.error('Error adding user:', error);
-            this.router.navigate(['/error']);
+            this.router.navigate(['/clientsubscription/error']);
           }
         );
     } else {
@@ -89,5 +100,13 @@ export class ClientSubscriptionComponent implements OnInit {
         console.log(`Error in ${key}:`, controlErrors);
       }
     });
+  }
+
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
+    this.selectedLanguage = lang == 'ar' ? 'en' : 'ar';
+    this.translate.use(this.selectedLanguage);
+    localStorage.setItem('selectedLanguage', this.selectedLanguage);
+    console.log('lang => ', this.selectedLanguage);
   }
 }
