@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GetClientsSubscribed } from '../../../../model/dashboard/GetClientsSubscribed';
 import { Subscription } from 'rxjs';
 import { UtilityService } from '../../../../services/utility.service';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -14,6 +16,7 @@ import { UtilityService } from '../../../../services/utility.service';
 })
 export class DashboardHomeComponent implements OnInit {
   searchForm: FormGroup;
+  selectedLanguage: any = '';
   displayedColumns: string[] = [
     'firstName',
     'lastName',
@@ -37,8 +40,24 @@ export class DashboardHomeComponent implements OnInit {
   constructor(
     private dashboardhomeService: DashboardHomeService,
     private fb: FormBuilder,
-    private utility: UtilityService
-  ) {}
+    private utility: UtilityService,
+    private router: Router,
+    private translate: TranslateService
+  ) {
+    this.selectedLanguage = localStorage.getItem('selectedLanguage');
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      this.selectedLanguage = savedLanguage;
+      this.translate.use(savedLanguage);
+    } else {
+      this.translate.setDefaultLang('en');
+
+      const htmlTag = document.documentElement;
+      htmlTag.lang = this.selectedLanguage;
+      htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
+
+    }
+  }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -134,6 +153,24 @@ export class DashboardHomeComponent implements OnInit {
       );
     }
   }
+  Logout(){
+    this.router.navigate(['']);
+  }
+  switchLanguage(lang: string) {
+    // Toggle language
+    this.selectedLanguage = this.selectedLanguage === 'ar' ? 'en' : 'ar';
+
+    // Set the selected language in the translate service and localStorage
+    this.translate.use(this.selectedLanguage);
+    localStorage.setItem('selectedLanguage', this.selectedLanguage);
+
+    // Update HTML lang and direction attributes
+    const htmlTag = document.documentElement;
+    htmlTag.lang = this.selectedLanguage;
+    htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
+
+    console.log('Language set to =>', this.selectedLanguage);
+  }
   GetClientsSubscribedReport(
     firstName?: string | null,
     lastName?: string | null,
@@ -182,5 +219,9 @@ export class DashboardHomeComponent implements OnInit {
           }
         )
     );
+  }
+  
+  resetForm(): void {
+    this.searchForm.reset(); // يعيد تعيين النموذج لحالته الافتراضية
   }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardLoginComponent } from './dashboard-login/dashboard-login.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../../../app.module';
 
 @NgModule({
   declarations: [DashboardLoginComponent,DashboardHomeComponent],
@@ -27,7 +29,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatInputModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ]
 })
 export class DashboardModuleModule { }

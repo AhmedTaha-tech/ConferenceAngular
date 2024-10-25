@@ -20,10 +20,15 @@
 "PhoneNumberisrequired" : "رقم الجوال مطلوب",
 "MobileExists":"رقم الجوال مسجل من قبل",
 
+"CreatedAt":"تاريخ التسجل",
 "subscribe": "اشتراك"
-
   },
   "header":{
-"selectedLanguage":"English"
+    "selectedLanguage":"English"
+  },
+  "DashBoardConferences":{
+    "Subscribers":"المشتركين",
+    "Search":"بحــــــث",
+    "clear":"اعادة تعيين"
   }
 }
