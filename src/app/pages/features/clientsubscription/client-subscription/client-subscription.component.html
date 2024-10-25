@@ -14,8 +14,11 @@
           </div>
           <div class="col-lg-7 col-xl-7 h-100">
             <div class="d-flex justify-content-end p-3">
-              <button class="btn btn-lang" (click)="switchLanguage(selectedLanguage)">
-                {{'header.selectedLanguage'|translate}}
+              <button
+                class="btn btn-lang"
+                (click)="switchLanguage(selectedLanguage)"
+              >
+                {{ "header.selectedLanguage" | translate }}
                 <svg
                   width="18"
                   height="18
@@ -56,106 +59,122 @@
                       src="../../../../../assets/images/logo-main.svg"
                       alt=""
                     />
-                    <h1 class="auth-title">{{'ClientSubscription.AddClientSubscription'|translate}}</h1>
+                    <h1 class="auth-title">
+                      {{
+                        "ClientSubscription.AddClientSubscription" | translate
+                      }}
+                    </h1>
                   </div>
                   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
                     <div class="row flex-column g-0 mb-3">
                       <div class="col-12">
-                        <div class="d-grid mb-2">
+                        <div class="d-grid mb-3">
                           <mat-form-field appearance="outline">
-                            <mat-label>{{'ClientSubscription.FirstName'|translate}}</mat-label>
+                            <mat-label>{{
+                              "ClientSubscription.FirstName" | translate
+                            }}</mat-label>
                             <input
                               matInput
                               formControlName="firstName"
-                              placeholder='{{"ClientSubscription.Enterfirstname"|translate}}'
+                              placeholder="{{
+                                'ClientSubscription.Enterfirstname' | translate
+                              }}"
                             />
                             <mat-error
                               *ngIf="
                                 addForm.get('firstName')?.hasError('required')
                               "
                             >
-                              {{'ClientSubscription.Firstnameisrequired'|translate}}
+                              {{
+                                "ClientSubscription.Firstnameisrequired"
+                                  | translate
+                              }}
                             </mat-error>
                           </mat-form-field>
                         </div>
                       </div>
                       <div class="col-12">
-                        <div class="d-grid mb-2">
+                        <div class="d-grid mb-3">
                           <mat-form-field appearance="outline">
-                            <mat-label>{{'ClientSubscription.LastName'|translate}}</mat-label>
+                            <mat-label>{{
+                              "ClientSubscription.LastName" | translate
+                            }}</mat-label>
                             <input
                               matInput
                               formControlName="lastName"
-                              placeholder='{{"ClientSubscription.Enterlastname"|translate}}'
+                              placeholder="{{
+                                'ClientSubscription.Enterlastname' | translate
+                              }}"
                             />
                             <mat-error
                               *ngIf="
                                 addForm.get('lastName')?.hasError('required')
                               "
                             >
-                              {{'ClientSubscription.Lastnameisrequired'|translate}}
+                              {{
+                                "ClientSubscription.Lastnameisrequired"
+                                  | translate
+                              }}
                             </mat-error>
                           </mat-form-field>
                         </div>
                       </div>
                       <div class="col-12">
-                        <div class="d-grid mb-2">
+                        <div class="d-grid mb-3">
                           <mat-form-field appearance="outline">
-                            <mat-label>{{'ClientSubscription.Email'|translate}}</mat-label>
+                            <mat-label>{{
+                              "ClientSubscription.Email" | translate
+                            }}</mat-label>
                             <input
                               matInput
                               formControlName="email"
-                              placeholder='{{"ClientSubscription.Enteremail"|translate}}'
+                              placeholder="{{
+                                'ClientSubscription.Enteremail' | translate
+                              }}"
                               type="email"
                             />
                             <mat-error
                               *ngIf="addForm.get('email')?.hasError('required')"
                             >
-                              {{'ClientSubscription.Emailisrequired'|translate}}
+                              {{
+                                "ClientSubscription.Emailisrequired" | translate
+                              }}
                             </mat-error>
                             <mat-error
                               *ngIf="addForm.get('email')?.hasError('email')"
                             >
-                              {{'ClientSubscription.Pleaseenteravalidemail'|translate}}
+                              {{
+                                "ClientSubscription.Pleaseenteravalidemail"
+                                  | translate
+                              }}
                             </mat-error>
                           </mat-form-field>
                         </div>
                       </div>
                       <div class="col-12">
-                        <div class="d-grid mb-2">
+                        <div class="d-grid mb-3">
                           <mat-form-field
                             appearance="outline"
                             class="full-width"
                           >
-                            <mat-label>{{"ClientSubscription.PhoneNumber"|translate}}</mat-label>
-
                             <!-- Wrapper for Country Code Dropdown and Phone Number Input -->
                             <div class="phone-input-wrapper">
-                              <!-- Country Code Dropdown with Flag -->
-                              <!-- <mat-select
-                                formControlName="countryCode"
-                                class="country-code-select"
-                              >
-                                <mat-option
-                                  *ngFor="let country of countries"
-                                  [value]="country.dialCode"
-                                >
+                              <div>
+                                <div class="flag">
                                   <img
-                                    [src]="country.flag"
-                                    width="20"
-                                    height="15"
-                                    alt="{{ country.name }} flag"
-                                    class="flag-icon"
+                                    src="../../../../../assets/flags/saudi-arabia-flag-icon.svg"
                                   />
-                                  {{ country.dialCode }}
-                                </mat-option>
-                              </mat-select> -->
-
+                                  <span class="code"> 966+ |</span>
+                                </div>
+                              </div>
                               <!-- Phone Number Input -->
                               <input
                                 matInput
                                 formControlName="phoneNumber"
-                                placeholder='{{"ClientSubscription.Enterphonenumber"|translate}}'
+                                placeholder="{{
+                                  'ClientSubscription.Enterphonenumber'
+                                    | translate
+                                }}"
                                 class="phone-number-input"
                               />
                             </div>
@@ -165,7 +184,10 @@
                                 addForm.get('phoneNumber')?.hasError('required')
                               "
                             >
-                              {{"ClientSubscription.PhoneNumberisrequired"|translate}}
+                              {{
+                                "ClientSubscription.PhoneNumberisrequired"
+                                  | translate
+                              }}
                             </mat-error>
                           </mat-form-field>
                         </div>
@@ -176,7 +198,7 @@
                     </div>
                     <div class="d-grid">
                       <button class="btn btn-lg btn-primary" type="submit">
-                        {{'ClientSubscription.subscribe'|translate}}
+                        {{ "ClientSubscription.subscribe" | translate }}
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           version="1.1"
