@@ -21,6 +21,11 @@ export class DashboardHomeComponent implements OnInit {
     'phoneNumber',
     'createdAt',
   ];
+  isCollapsed: boolean = false;
+
+  toggleAside() {
+    this.isCollapsed = !this.isCollapsed;
+  }
   dataSource = new MatTableDataSource<GetClientsSubscribed>([]);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   totalRecords = 0;
