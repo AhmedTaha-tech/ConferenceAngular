@@ -13,10 +13,14 @@
     "Enteremail" : "Enter Email",
     "Emailisrequired" : "Email is required",
     "Pleaseenteravalidemail" : "Please enter a valid email",
-    
+    "EmailExists":"Email Already exists",
+
+
     "PhoneNumber":"Phone Number",
     "Enterphonenumber" : "Enter Phone Number",
     "PhoneNumberisrequired" : "Phone Number is required",
+    "MobileExists":"Mobile Already exists",
+
     "subscribe": "Subscribe"
   },
   "header":{

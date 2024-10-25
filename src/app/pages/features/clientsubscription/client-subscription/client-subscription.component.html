@@ -132,7 +132,7 @@
                             <!-- Wrapper for Country Code Dropdown and Phone Number Input -->
                             <div class="phone-input-wrapper">
                               <!-- Country Code Dropdown with Flag -->
-                              <mat-select
+                              <!-- <mat-select
                                 formControlName="countryCode"
                                 class="country-code-select"
                               >
@@ -149,7 +149,7 @@
                                   />
                                   {{ country.dialCode }}
                                 </mat-option>
-                              </mat-select>
+                              </mat-select> -->
 
                               <!-- Phone Number Input -->
                               <input
@@ -165,13 +165,15 @@
                                 addForm.get('phoneNumber')?.hasError('required')
                               "
                             >
-                              {{"ClientSubscription.Phonenumberisrequired"|translate}}
+                              {{"ClientSubscription.PhoneNumberisrequired"|translate}}
                             </mat-error>
                           </mat-form-field>
                         </div>
                       </div>
                     </div>
-
+                    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+                      {{ errorMessage }}
+                    </div>
                     <div class="d-grid">
                       <button class="btn btn-lg btn-primary" type="submit">
                         {{'ClientSubscription.subscribe'|translate}}

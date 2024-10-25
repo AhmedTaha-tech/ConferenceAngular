@@ -13,11 +13,15 @@
 "Enteremail" : "ادخل الايميل",
 "Emailisrequired" : "الايميل مطلوب",
 "Pleaseenteravalidemail" : "من فضلك ادخل صيغة ايميل صحيحة",
+"EmailExists":"الايميل مسجل من قبل",
 
 "PhoneNumber":"رقم الجوال",
 "Enterphonenumber" : "ادخل رقم الجوال",
 "PhoneNumberisrequired" : "رقم الجوال مطلوب",
+"MobileExists":"رقم الجوال مسجل من قبل",
+
 "subscribe": "اشتراك"
+
   },
   "header":{
 "selectedLanguage":"English"

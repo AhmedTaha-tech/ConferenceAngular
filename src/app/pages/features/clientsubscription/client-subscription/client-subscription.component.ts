@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ClientSubscriptionComponent implements OnInit {
   addForm!: FormGroup;
+  errorMessage: string = '';
 
   // List of countries with their dial codes and flags
   countries = [
@@ -85,7 +86,17 @@ export class ClientSubscriptionComponent implements OnInit {
           },
           (error) => {
             console.error('Error adding user:', error);
-            this.router.navigate(['/clientsubscription/error']);
+            if (error.error.status_code == 400 && error.error.CustomErrors.length > 0) 
+            {
+              if (error.error.CustomErrors[0].ErrorDescription == 'EmailExists')
+                this.translateMessage('EmailExists');
+              if (
+                error.error.CustomErrors[0].ErrorDescription == 'MobileExists'
+              )
+                this.translateMessage('MobileExists');
+            } 
+            else 
+              this.router.navigate(['/clientsubscription/error']);
           }
         );
     } else {
@@ -109,4 +120,12 @@ export class ClientSubscriptionComponent implements OnInit {
     localStorage.setItem('selectedLanguage', this.selectedLanguage);
     console.log('lang => ', this.selectedLanguage);
   }
+
+  private translateMessage(key: string): void {
+    this.translate.get(key).subscribe((translation: string) => {
+        this.errorMessage = translation;
+        console.log(this.errorMessage); // استخدام الرسالة هنا
+        // يمكنك استدعاء وظائف أخرى باستخدام الرسالة المترجمة
+    });
+}
 }

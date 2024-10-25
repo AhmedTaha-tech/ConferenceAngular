@@ -21,8 +21,8 @@ export class DashboardLoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      Username: ['', [Validators.required]],
+      Password: ['', [Validators.required]],
     });
   }
 
