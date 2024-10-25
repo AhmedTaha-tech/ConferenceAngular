@@ -257,8 +257,8 @@
       align-items: center;
       .user-info {
         margin-bottom: 0;
-        border-inline-start: 1px solid var(--gray-500);
-        padding-inline-start: 0.75rem;
+        border-inline: 1px solid var(--gray-500);
+        padding-inline: 0.75rem;
       }
     }
   }
@@ -267,8 +267,8 @@
     padding-inline-start: 240px;
     background-color: var(--gray-50);
     transition: all ease-in-out 0.3s;
-    .dashbord-body {
-      min-height: calc(100vh - 10rem);
+    .dashbord-page-body {
+      min-height: calc(100vh - 12rem);
     }
     .dashbord-page-header {
       padding: 0.75rem 2rem;
@@ -286,7 +286,7 @@
   }
   .footer {
     padding: 1rem 2rem;
-    background-color: var(--bs-white);
+    background-color: var(--gray-50);
     p {
       margin-bottom: 0;
     }

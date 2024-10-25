@@ -111,6 +111,23 @@
         <div class="user-info">
           <h6 class="user-name mb-0">Mohamed Smair</h6>
         </div>
+        <button class="btn">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 17.0001L21 12.0001M21 12.0001L16 7.00006M21 12.0001H9M12 17.0001C12 17.2956 12 17.4434 11.989 17.5715C11.8748 18.902 10.8949 19.9969 9.58503 20.2573C9.45903 20.2824 9.31202 20.2987 9.01835 20.3314L7.99694 20.4448C6.46248 20.6153 5.69521 20.7006 5.08566 20.5055C4.27293 20.2455 3.60942 19.6516 3.26118 18.8725C3 18.2883 3 17.5163 3 15.9724V8.02776C3 6.48383 3 5.71186 3.26118 5.12758C3.60942 4.34854 4.27293 3.75467 5.08566 3.49459C5.69521 3.29953 6.46246 3.38478 7.99694 3.55528L9.01835 3.66877C9.31212 3.70141 9.45901 3.71773 9.58503 3.74279C10.8949 4.00322 11.8748 5.0981 11.989 6.42867C12 6.5567 12 6.70449 12 7.00006"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
       </div>
     </nav>
 
@@ -169,75 +186,84 @@
         <div class="collapse" id="collapseExample">
           <div class="card mb-3">
             <div class="card-body">
-              <form
-                class="row g-3"
-                [formGroup]="searchForm"
-                (ngSubmit)="onSearchForm()"
-              >
-                <div class="col-xl-4">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="firstName"
-                      id="firstName"
-                      placeholder="First Name"
-                    />
-                    <label for="firstName">First Name</label>
+              <form [formGroup]="searchForm" (ngSubmit)="onSearchForm()">
+                <div class="row g-3">
+                  <div class="col-xl-4">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="firstName"
+                        id="firstName"
+                        placeholder="First Name"
+                      />
+                      <label for="firstName">First Name</label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="lastName"
+                        id="lastName"
+                        placeholder="Last Name"
+                      />
+                      <label for="lastName">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        formControlName="email"
+                        id="email"
+                        placeholder="type Email"
+                      />
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="date"
+                        class="form-control"
+                        formControlName="createdAt"
+                        id="createdAt"
+                        placeholder="Last Name"
+                      />
+                      <label for="createdAt">Created At</label>
+                    </div>
+                  </div>
+                  <div class="col-xl-4">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="phoneNumber"
+                        id="phoneNumber"
+                        placeholder="Phone Number"
+                      />
+                      <label for="phoneNumber">Phone Number</label>
+                    </div>
                   </div>
                 </div>
-                <div class="col-xl-4">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="lastName"
-                      id="lastName"
-                      placeholder="Last Name"
-                    />
-                    <label for="lastName">Last Name</label>
+                <div class="row justify-content-center g-3">
+                  <div class="col-xl-2">
+                    <div class="d-grid">
+                      <button class="btn btn-lg btn-primary" type="submit">
+                        Search
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="col-xl-4">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="email"
-                      class="form-control"
-                      formControlName="email"
-                      id="email"
-                      placeholder="type Email"
-                    />
-                    <label for="email">Email</label>
+                  <div class="col-xl-2">
+                    <div class="d-grid">
+                      <button class="btn btn-lg btn-light-white" type="btn">
+                        clear
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="col-xl-4">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="date"
-                      class="form-control"
-                      formControlName="createdAt"
-                      id="createdAt"
-                      placeholder="Last Name"
-                    />
-                    <label for="createdAt">Created At</label>
-                  </div>
-                </div>
-                <div class="col-xl-4">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="phoneNumber"
-                      id="phoneNumber"
-                      placeholder="Phone Number"
-                    />
-                    <label for="phoneNumber">Phone Number</label>
-                  </div>
-                </div>
-                <div class="col-xl-4">
-                  <button class="btn btn-lg btn-primary" type="submit">
-                    Search
-                  </button>
                 </div>
               </form>
             </div>
