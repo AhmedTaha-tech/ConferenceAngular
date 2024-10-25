@@ -77,6 +77,28 @@
   margin-right: 8px;
   vertical-align: middle;
 }
+.headline-2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--color-900);
+}
+.main-paragraph {
+  font-size: 1rem;
+  color: var(--color-600);
+  line-height: 1.5rem;
+}
+@media (max-width: 992px) {
+  .headline-2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--color-900);
+  }
+  .main-paragraph {
+    font-size: 0.875rem;
+    color: var(--color-600);
+    line-height: 1.5rem;
+  }
+}
 /*End Global */
 
 /* Start auth*/
@@ -189,6 +211,38 @@
     max-height: 70px;
   }
 }
+/*End Header */
+/* stat .thank-you-container,.error-message-container */
+.thank-you-container,
+.error-message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  align-items: center;
+  width: 100%;
+  background-image: url(../src/assets/images/medical-bg.png);
+  background-size: cover;
+  background-position: bottom;
+}
+.thank-you-container .header,
+.error-message-container .header {
+  width: 100%;
+}
+.thank-you-container .content-body,
+.error-message-container .content-body {
+  width: 100%;
+}
+.thank-you-container .content-box,
+.error-message-container .content-box {
+  background-color: var(--bs-white);
+  padding-block: 3.5rem;
+
+  border-radius: 1rem;
+  box-shadow: 0px 4px 20.3px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* End .thank-you-container,.error-message-container */
 /* satr footer */
 .footer {
   padding-block: 1.5rem;

@@ -86,17 +86,17 @@ export class ClientSubscriptionComponent implements OnInit {
           },
           (error) => {
             console.error('Error adding user:', error);
-            if (error.error.status_code == 400 && error.error.CustomErrors.length > 0) 
-            {
+            if (
+              error.error.status_code == 400 &&
+              error.error.CustomErrors.length > 0
+            ) {
               if (error.error.CustomErrors[0].ErrorDescription == 'EmailExists')
                 this.translateMessage('EmailExists');
               if (
                 error.error.CustomErrors[0].ErrorDescription == 'MobileExists'
               )
                 this.translateMessage('MobileExists');
-            } 
-            else 
-              this.router.navigate(['/clientsubscription/error']);
+            } else this.router.navigate(['/clientsubscription/error']);
           }
         );
     } else {
@@ -114,18 +114,26 @@ export class ClientSubscriptionComponent implements OnInit {
   }
 
   switchLanguage(lang: string) {
-    this.translate.use(lang);
-    this.selectedLanguage = lang == 'ar' ? 'en' : 'ar';
+    // Toggle language
+    this.selectedLanguage = this.selectedLanguage === 'ar' ? 'en' : 'ar';
+
+    // Set the selected language in the translate service and localStorage
     this.translate.use(this.selectedLanguage);
     localStorage.setItem('selectedLanguage', this.selectedLanguage);
-    console.log('lang => ', this.selectedLanguage);
+
+    // Update HTML lang and direction attributes
+    const htmlTag = document.documentElement;
+    htmlTag.lang = this.selectedLanguage;
+    htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
+
+    console.log('Language set to =>', this.selectedLanguage);
   }
 
   private translateMessage(key: string): void {
     this.translate.get(key).subscribe((translation: string) => {
-        this.errorMessage = translation;
-        console.log(this.errorMessage); // استخدام الرسالة هنا
-        // يمكنك استدعاء وظائف أخرى باستخدام الرسالة المترجمة
+      this.errorMessage = translation;
+      console.log(this.errorMessage); // استخدام الرسالة هنا
+      // يمكنك استدعاء وظائف أخرى باستخدام الرسالة المترجمة
     });
-}
+  }
 }
