@@ -25,7 +25,7 @@ export class SubscriptionSuccessComponent {
 
     }
   }
-  switchLanguage(lang: string) {
+  switchLanguage() {
     // Toggle language
     this.selectedLanguage = this.selectedLanguage === 'ar' ? 'en' : 'ar';
 

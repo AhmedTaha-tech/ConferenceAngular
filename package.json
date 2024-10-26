@@ -22,8 +22,10 @@
     "@angular/router": "^18.2.8",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@zxing/browser": "^0.1.5",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "html5-qrcode": "^2.3.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
