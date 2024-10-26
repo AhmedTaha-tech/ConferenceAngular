@@ -50,6 +50,9 @@ export class ClientSubscriptionComponent implements OnInit {
     } else {
       this.translate.setDefaultLang('en');
     }
+    const htmlTag = document.documentElement;
+    htmlTag.lang = this.selectedLanguage;
+    htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
   }
 
   ngOnInit(): void {

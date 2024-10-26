@@ -20,11 +20,15 @@
     "Enterphonenumber" : "Enter Phone Number",
     "PhoneNumberisrequired" : "Phone Number is required",
     "MobileExists":"Mobile Already exists",
-
+    "CreatedAt":"Subscribe Date",
     "subscribe": "Subscribe"
   },
   "header":{
     "selectedLanguage":"العربية"
   },
-  "dashboard": "Dashboard"
+  "DashBoardConferences":{
+    "Subscribers":"Subscribers",
+    "Search":"Search",
+    "clear":"clear"
+  }
 }
