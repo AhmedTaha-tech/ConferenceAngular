@@ -1,12 +1,16 @@
 <section class="auth-continer">
-  <div class="row justify-content-center g-0 w-100">
-    <div class="col-xxl-9 col-xl-10 col-lg-11 col-md-8">
-      <div class="auth-box">
+  <div class="auth-box">
+    <div class="row h-100 g-0 w-100 align-items-center">
+      <div class="col-lg-5 col-xl-4 d-none d-lg-block">
+        <div class="img-container"></div>
+      </div>
+      <div class="col-lg-7 col-xl-8 h-100">
         <button class="btn btn-lang">
           عربي
           <svg
             width="18"
-            height="18"
+            height="18
+                  "
             viewBox="0 0 22 22"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,107 +37,86 @@
             />
           </svg>
         </button>
-        <div class="row h-100 g-0 align-items-center w-100">
-          <div class="col-lg-5 col-xl-5 d-none d-lg-block">
-            <div class="img-container">
-              <img
-                class="img-fluid"
-                src="../../../../../assets/images/auth/auth-img.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="col-lg-7 col-xl-7 h-100">
-            <div class="d-flex h-100 flex-column">
-              <div
-                class="row justify-content-center align-items-center flex-grow-1"
-              >
-                <div class="col-xl-7 col-md-8 col-lg-9">
-                  <div class="form-box">
-                    <div class="text-center">
-                      <img
-                        class="logo"
-                        src="../../../../../assets/images/logo-main.svg"
-                        alt=""
-                      />
-                      <h1 class="auth-title">Login</h1>
-                    </div>
-                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                      <div class="d-grid mb-2">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Username</mat-label>
-                          <input
-                            matInput
-                            formControlName="Username"
-                            placeholder="Enter user name"
-                          />
-                          <mat-error
-                            *ngIf="
-                              loginForm.get('username')?.hasError('required')
-                            "
-                          >
-                            Last name is required
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-                      <div class="d-grid mb-2">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Password</mat-label>
-                          <input
-                            matInput
-                            formControlName="Password"
-                            placeholder="Enter Password"
-                            type="password"
-                          />
-                          <mat-error
-                            *ngIf="
-                              loginForm.get('password')?.hasError('password')
-                            "
-                          >
-                            Password
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-
-                      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-                        {{ errorMessage }}
-                      </div>
-                      <div class="d-grid">
-                        <button
-                          type="submit"
-                          class="btn btn-lg btn-primary"
-                          [disabled]="!loginForm.valid"
-                        >
-                          Login
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            version="1.1"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            width="18"
-                            height="18"
-                            x="0"
-                            y="0"
-                            viewBox="0 0 512 512"
-                            style="enable-background: new 0 0 512 512"
-                            xml:space="preserve"
-                            class=""
-                          >
-                            <g>
-                              <path
-                                d="M502.628 278.627 389.25 392.005c-6.249 6.249-14.438 9.373-22.628 9.373s-16.379-3.124-22.628-9.373c-12.496-12.497-12.496-32.758 0-45.255L402.745 288H32c-17.673 0-32-14.327-32-32s14.327-32 32-32h370.745l-58.751-58.75c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0l113.378 113.378c12.496 12.496 12.496 32.758 0 45.254z"
-                                fill="currentColor"
-                                opacity="1"
-                                data-original="currentColor"
-                                class=""
-                              ></path>
-                            </g>
-                          </svg>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+        <div class="row justify-content-center align-items-center g-0">
+          <div class="col-xl-7 col-md-8 col-lg-9 col-11">
+            <div class="form-box">
+              <div class="text-center">
+                <img
+                  class="logo"
+                  src="../../../../../assets/images/logo-main.svg"
+                  alt=""
+                />
+                <h1 class="auth-title">Login</h1>
               </div>
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="d-grid mb-2">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input
+                      matInput
+                      formControlName="Username"
+                      placeholder="Enter user name"
+                    />
+                    <mat-error
+                      *ngIf="loginForm.get('username')?.hasError('required')"
+                    >
+                      Last name is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="d-grid mb-2">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      formControlName="Password"
+                      placeholder="Enter Password"
+                      type="password"
+                    />
+                    <mat-error
+                      *ngIf="loginForm.get('password')?.hasError('password')"
+                    >
+                      Password
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+                  {{ errorMessage }}
+                </div>
+                <div class="d-grid">
+                  <button
+                    type="submit"
+                    class="btn btn-lg btn-primary"
+                    [disabled]="!loginForm.valid"
+                  >
+                    Login
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      version="1.1"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      width="18"
+                      height="18"
+                      x="0"
+                      y="0"
+                      viewBox="0 0 512 512"
+                      style="enable-background: new 0 0 512 512"
+                      xml:space="preserve"
+                      class=""
+                    >
+                      <g>
+                        <path
+                          d="M502.628 278.627 389.25 392.005c-6.249 6.249-14.438 9.373-22.628 9.373s-16.379-3.124-22.628-9.373c-12.496-12.497-12.496-32.758 0-45.255L402.745 288H32c-17.673 0-32-14.327-32-32s14.327-32 32-32h370.745l-58.751-58.75c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0l113.378 113.378c12.496 12.496 12.496 32.758 0 45.254z"
+                          fill="currentColor"
+                          opacity="1"
+                          data-original="currentColor"
+                          class=""
+                        ></path>
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

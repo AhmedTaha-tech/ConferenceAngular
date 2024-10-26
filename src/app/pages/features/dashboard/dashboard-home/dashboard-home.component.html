@@ -1,5 +1,9 @@
 <main [ngClass]="{ collapsed: isCollapsed }" class="main-wrapper">
-  <aside class="side-nav">
+  <aside
+    class="side-nav offcanvas-lg offcanvas-start"
+    tabindex="-1"
+    id="offcanvasResponsive"
+  >
     <div class="side-nav-header">
       <a class="navbar-brand" href="#">
         <img
@@ -57,7 +61,33 @@
   <section class="main-contet">
     <nav class="navbar dashbord-header">
       <div class="start">
-        <button class="btn btn-collapse-aside" (click)="toggleAside()">
+        <button
+          class="btn btn-collapse-aside d-none d-lg-flex"
+          (click)="toggleAside()"
+        >
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 16H20M4 8H28M4 24H28"
+              stroke="#667085"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button
+          class="btn btn btn-collapse-aside d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasResponsive"
+          aria-controls="offcanvasResponsive"
+        >
           <svg
             width="32"
             height="32"
@@ -188,7 +218,7 @@
             <div class="card-body">
               <form [formGroup]="searchForm" (ngSubmit)="onSearchForm()">
                 <div class="row g-3">
-                  <div class="col-xl-4">
+                  <div class="col-xl-4 col-6">
                     <div class="form-floating mb-3">
                       <input
                         type="text"
@@ -200,7 +230,7 @@
                       <label for="firstName">First Name</label>
                     </div>
                   </div>
-                  <div class="col-xl-4">
+                  <div class="col-xl-4 col-6">
                     <div class="form-floating mb-3">
                       <input
                         type="text"
@@ -212,7 +242,7 @@
                       <label for="lastName">Last Name</label>
                     </div>
                   </div>
-                  <div class="col-xl-4">
+                  <div class="col-xl-4 col-md-6">
                     <div class="form-floating mb-3">
                       <input
                         type="email"
@@ -224,7 +254,7 @@
                       <label for="email">Email</label>
                     </div>
                   </div>
-                  <div class="col-xl-4">
+                  <div class="col-xl-4 col-md-6">
                     <div class="form-floating mb-3">
                       <input
                         type="date"
@@ -236,7 +266,7 @@
                       <label for="createdAt">Created At</label>
                     </div>
                   </div>
-                  <div class="col-xl-4">
+                  <div class="col-xl-4 col-md-6">
                     <div class="form-floating mb-3">
                       <input
                         type="text"
@@ -250,14 +280,14 @@
                   </div>
                 </div>
                 <div class="row justify-content-center g-3">
-                  <div class="col-xl-2">
+                  <div class="col-xl-2 col-6">
                     <div class="d-grid">
                       <button class="btn btn-lg btn-primary" type="submit">
                         Search
                       </button>
                     </div>
                   </div>
-                  <div class="col-xl-2">
+                  <div class="col-xl-2 col-6">
                     <div class="d-grid">
                       <button class="btn btn-lg btn-light-white" type="btn">
                         clear
@@ -271,7 +301,7 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-container" tabindex="0">
               <table mat-table [dataSource]="dataSource" class="table" matSort>
                 <!-- First Name Column -->
                 <ng-container matColumnDef="firstName">
