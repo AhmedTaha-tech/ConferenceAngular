@@ -14,9 +14,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../../../app.module';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 
 @NgModule({
-  declarations: [DashboardLoginComponent,DashboardHomeComponent],
+  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent],
   imports: [
     CommonModule,
     MatTableModule,

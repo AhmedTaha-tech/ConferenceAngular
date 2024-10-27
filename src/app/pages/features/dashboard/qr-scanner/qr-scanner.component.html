@@ -11,7 +11,7 @@
       <button (click)="ConfirmSubscriberAttendance()">Confirm</button>
     </div>
   
-    <div *ngIf="qrCodeText!=''" class="result">
+    <div *ngIf="showSuccessMessage" class="result">
       <h4>QR Code Content:</h4>
       <p>{{ qrCodeText }}</p>
     </div>
@@ -24,11 +24,11 @@
 
     <div *ngIf="showSuccessMessage" class="success-message">
         QR Code scanned successfully!
-      </div>
-      <div *ngIf="!showSuccessMessage" class="success-message">
-        QR Code scanned successfully!
-      </div>
-      {{showSuccessMessage}}
+    </div>
+    <div *ngIf="!showSuccessMessage" class="success-message">
+      QR Code scanned successfully!
+    </div>
+     Qr Code : {{qrCodeText}}
   </div>
 
 

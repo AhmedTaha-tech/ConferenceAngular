@@ -4,8 +4,6 @@ import { BrowserMultiFormatReader } from '@zxing/browser';
 
 @Component({
   selector: 'app-qr-scanner',
-  standalone: true,
-  imports: [],
   templateUrl: './qr-scanner.component.html',
   styleUrl: './qr-scanner.component.css'
 })
@@ -37,11 +35,11 @@ export class QrScannerComponent {
       this.canvasElement.nativeElement.toBlob((blob) => {
         if (blob) {
           this.qrService
-        .decodeFromBlob(blob)
-        .then((text) => {
-          this.qrCodeText = text;
-          this.body.qrCodeTextContent=this.qrCodeText;
-          });
+            .decodeFromBlob(blob)
+            .then((text) => {
+              this.qrCodeText = text;
+              this.body.qrCodeTextContent = this.qrCodeText;
+            });
         }
       });
     }
@@ -68,11 +66,12 @@ export class QrScannerComponent {
       this.canvasElement.nativeElement.toBlob((blob) => {
         if (blob) {
           this.qrService
-        .decodeFromBlob(blob)
-        .then((text) => {
-          this.qrCodeText = text;
-          this.body.qrCodeTextContent=this.qrCodeText;
-          });
+            .decodeFromBlob(blob)
+            .then((text) => {
+              this.qrCodeText = text;
+              this.body.qrCodeTextContent = this.qrCodeText;
+              this.showSuccessMessage = true; // Show success message
+            });
         }
       });
     }
@@ -80,13 +79,13 @@ export class QrScannerComponent {
 
 
   ConfirmSubscriberAttendance() {
-    if (this.qrCodeText!='') {
+    if (this.qrCodeText != '') {
       this.qrService.ConfirmSubscriberAttendance(this.body).subscribe(
         (response) => {
           if (response.status_code == 200) {
             console.log('User added successfully!', response);
             this.showSuccessMessage = true; // Show success message
-        this.hideSuccessMessageAfterDelay(); // Call the method to hide it after a delay
+            this.hideSuccessMessageAfterDelay(); // Call the method to hide it after a delay
           }
         },
         (error) => {
@@ -99,6 +98,7 @@ export class QrScannerComponent {
   hideSuccessMessageAfterDelay() {
     setTimeout(() => {
       this.showSuccessMessage = false; // Hide success message after 5 seconds
+      this.qrCodeText=''
     }, 5000); // 5000 milliseconds = 5 seconds
   }
 }
