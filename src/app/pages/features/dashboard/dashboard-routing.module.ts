@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'dashoardhome',component: DashboardHomeComponent},
   { path: 'dashoardlogin', component: DashboardLoginComponent },
   { path: 'qrreader', component: QrScannerComponent },
+  { path: 'scanner', component: QrScannerComponent },
 
 ];
 
