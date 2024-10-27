@@ -15,20 +15,16 @@
       <h4>QR Code Content:</h4>
       <p>{{ qrCodeText }}</p>
     </div>
+    <!-- <div *ngIf="showSuccessMessage" class="success-message">
+      <h4>QR Code Content:</h4>
+      <p>{{ qrCodeText }}</p>
+    </div> -->
     <div *ngIf="errorMessage" class="error">
       <h4>Error:</h4>
       <p>{{ errorMessage }}</p>
     </div>
   
     <p *ngIf="qrCodeText">QR Code Content: {{ qrCodeText }}</p>
-
-    <div *ngIf="showSuccessMessage" class="success-message">
-        QR Code scanned successfully!
-    </div>
-    <div *ngIf="!showSuccessMessage" class="success-message">
-      QR Code scanned successfully!
-    </div>
-     Qr Code : {{qrCodeText}}
   </div>
 
 
