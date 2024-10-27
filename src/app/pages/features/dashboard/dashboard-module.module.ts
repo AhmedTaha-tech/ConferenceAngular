@@ -20,7 +20,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ScannerComponent } from './scanner/scanner.component';
 
 @NgModule({
-  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,ScannerComponent],
+  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,ScannerComponent,ScannerComponent],
   imports: [
     CommonModule,
     MatTableModule,
