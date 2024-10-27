@@ -83,13 +83,15 @@ export class QrScannerComponent {
       this.qrService.ConfirmSubscriberAttendance(this.body).subscribe(
         (response) => {
           if (response.status_code == 200) {
-            console.log('User added successfully!', response);
+            console.log('QR Code scanned successfully!', response);
             this.showSuccessMessage = true; // Show success message
             this.hideSuccessMessageAfterDelay(); // Call the method to hide it after a delay
           }
+          else
+          this.errorMessage="Error "
         },
         (error) => {
-          console.error('Error adding user:', error);
+          console.error('Error in QR Code Scanner :', error);
         }
       );
     }
