@@ -42,7 +42,7 @@ export class QrScannerComponent implements AfterViewInit {
   public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
   public qrCodeResult2: ScannerQRCodeSelectedFiles[] = [];
 
-  @ViewChild('action') action!: NgxScannerQrcodeComponent;
+  @ViewChild('action',{ static: false }) action!: NgxScannerQrcodeComponent;
 
   public percentage = 80;
   public quality = 100;
