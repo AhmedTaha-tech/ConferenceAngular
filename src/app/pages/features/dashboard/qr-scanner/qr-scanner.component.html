@@ -1,62 +1,35 @@
 <div class="container">
-    <h1>ngx-scanner-qrcode</h1>
-  
-    <!-- ngx-scanner-qrcode -->
-    <ngx-scanner-qrcode
-      #action="scanner"
-      [config]="config"
-      (error)="onError($event)"
-    ></ngx-scanner-qrcode>
-  
-    <!-- data  -->
-    <p class="data">{{ action.data | async }}</p>
-  
-    <!-- Loading -->
-    <p *ngIf="action.isLoading">⌛ Loading...</p>
-  
-    <!-- toggleCamera -->
-    <button
-      class="btn"
-      [class.btn-info]="!action.isStart"
-      [class.btn-warning]="action.isStart"
-      [disabled]="action.isLoading"
-    >
-      <img
-        *ngIf="!action.isStart"
-        (click)="handle(action, 'start')"
-        src="https://img.icons8.com/ios/50/000000/no-camera--v2.png"
-        width="30px"
-      />
-      <img
-        *ngIf="action.isStart"
-        (click)="handle(action, 'stop')"
-        src="https://img.icons8.com/ios/50/000000/no-camera--v1.png"
-        width="30px"
-      />
-    </button>
-  
-    <button
-      class="btn"
-      [class.btn-info]="!action.isStart"
-      [class.btn-warning]="action.isStart"
-      [disabled]="action.isLoading"
-      (click)="action.download('ngx-scanner-qrcode')"
-    >
-      Cap
-    </button>
-  
-    <br />
-  
+  <h1> ngx-scanner-qrcode </h1>
 
-  
-    <!-- License -->
-    <p class="center">
-      <a href="https://github.com/id1945/ngx-scanner-face/blob/master/LICENSE"
-        >MIT License</a
-      >
-    </p>
-  
-    <!-- Copyright -->
-    <p class="center">Copyright (c) 2022 DaiDH</p>
+  <div class="video-container">
+    <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event, action)"></ngx-scanner-qrcode>
   </div>
-  
+  <!-- ngx-scanner-qrcode -->
+
+  <!-- data  -->
+  <!-- <p class="data">{{ (action.data | async | json) }}</p> -->
+
+  <!-- loading -->
+  <p *ngIf="action.isLoading">⌛ Loading...</p>
+  <br>
+
+  <div class="button-container">
+    <button (click)="ConfirmSubscriberAttendance()">Confirm</button>
+  </div>
+
+  <div *ngIf="showSuccessMessage" class="result">
+    <h4>QR Code Content:</h4>
+    <p>{{ qrCodeText }}</p>
+  </div>
+  <!-- <div *ngIf="showSuccessMessage" class="success-message">
+    <h4>QR Code Content:</h4>
+    <p>{{ qrCodeText }}</p>
+  </div> -->
+  <div *ngIf="errorMessage" class="error">
+    <h4>Error:</h4>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <p *ngIf="qrCodeText">QR Code Content: {{ qrCodeText }}</p>
+
+</div>
