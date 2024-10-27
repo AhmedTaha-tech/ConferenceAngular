@@ -17,10 +17,10 @@ import { HttpLoaderFactory } from '../../../app.module';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 import { BrowserModule } from '@angular/platform-browser';
-import { ScannerComponent } from './scanner/scanner.component';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 
 @NgModule({
-  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,ScannerComponent,ScannerComponent],
+  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,SubscribersComponent],
   imports: [
     CommonModule,
     MatTableModule,
