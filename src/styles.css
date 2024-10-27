@@ -7,7 +7,7 @@
 * {
   box-sizing: border-box;
 }
-*:not(img):not(svg):not([class*="icon"]):not([class*="fa"]) {
+*:not(img):not(svg):not([class*="icon"]):not([class*="fa"]):not(i) {
   font-family: "IBM Plex Sans Arabic", sans-serif;
 }
 
@@ -97,6 +97,11 @@
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
+}
+.spinner-border.custom-spinner {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-width: 0.2em;
 }
 .primary-text {
   color: var(--primary-color);
