@@ -1,35 +1,35 @@
-<div class="qr-scanner">
-    <h3>QR Code Scanner</h3>
-  
-    <div class="video-container">
-      <video #video autoplay></video>
-      <canvas #canvas style="display: none;"></canvas>
-    </div>
-  
-    <div class="button-container">
-      <button (click)="captureImage()">Scan QR Code</button>
-      <button (click)="ConfirmSubscriberAttendance()">Confirm</button>
-    </div>
-  
-    <div *ngIf="qrCodeText!=''" class="result">
-      <h4>QR Code Content:</h4>
-      <p>{{ qrCodeText }}</p>
-    </div>
-    <div *ngIf="errorMessage" class="error">
-      <h4>Error:</h4>
-      <p>{{ errorMessage }}</p>
-    </div>
-  
-    <p *ngIf="qrCodeText">QR Code Content: {{ qrCodeText }}</p>
+<div class="container" style="text-align: center;">
+  <h1> QR Scanner </h1>
 
-    <div *ngIf="showSuccessMessage" class="success-message">
-        QR Code scanned successfully!
-      </div>
-      <div *ngIf="!showSuccessMessage" class="success-message">
-        QR Code scanned successfully!
-      </div>
-      {{showSuccessMessage}}
+  <div class="video-container" style="text-align: center;">
+    <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event, action)"></ngx-scanner-qrcode>
+  </div>
+  <!-- ngx-scanner-qrcode -->
+
+  <!-- data  -->
+  <!-- <p class="data">{{ (action.data | async | json) }}</p> -->
+
+  <!-- loading -->
+  <p *ngIf="action.isLoading">⌛ Loading...</p>
+  <br>
+
+  <div class="button-container">
+    <button (click)="ConfirmSubscriberAttendance()">Confirm</button>
   </div>
 
+  <div *ngIf="showSuccessMessage" class="result">
+    <h4>QR Code Content:</h4>
+    <p>{{ qrCodeText }}</p>
+  </div>
+  <!-- <div *ngIf="showSuccessMessage" class="success-message">
+    <h4>QR Code Content:</h4>
+    <p>{{ qrCodeText }}</p>
+  </div> -->
+  <div *ngIf="errorMessage" class="error">
+    <h4>Error:</h4>
+    <p>{{ errorMessage }}</p>
+  </div>
 
-  
+  <p *ngIf="qrCodeText">QR Code Content: {{ qrCodeText }}</p>
+
+</div>

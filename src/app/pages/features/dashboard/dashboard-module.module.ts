@@ -5,7 +5,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -14,9 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../../../app.module';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
+import { BrowserModule } from '@angular/platform-browser';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 
 @NgModule({
-  declarations: [DashboardLoginComponent,DashboardHomeComponent],
+  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,SubscribersComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -30,6 +34,12 @@ import { HttpLoaderFactory } from '../../../app.module';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgxScannerQrcodeModule,
+
+    FormsModule,
+    BrowserModule, 
+    NgxScannerQrcodeModule, 
+    
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
