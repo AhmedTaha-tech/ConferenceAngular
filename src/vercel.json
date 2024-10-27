@@ -1,6 +1,0 @@
-{
-    "framework": "angular",
-    "builds": [
-      { "src": "src/main.ts", "use": "@vercel/static" }
-    ]
-  }
