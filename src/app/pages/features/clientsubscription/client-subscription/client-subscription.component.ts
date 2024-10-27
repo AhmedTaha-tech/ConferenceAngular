@@ -69,7 +69,7 @@ export class ClientSubscriptionComponent implements OnInit {
       this.selectedCountryCode = code;
     });
   }
-
+  isLoading = false;
   onSubmit() {
     if (this.addForm.valid) {
       // Combine country code with phone number before sending the request
@@ -105,6 +105,12 @@ export class ClientSubscriptionComponent implements OnInit {
     } else {
       this.checkFormErrors();
     }
+    this.isLoading = true;
+
+    // Simulate an async operation (like an HTTP request)
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000); // Adjust the timeout or replace it with your actual logic
   }
 
   checkFormErrors() {
