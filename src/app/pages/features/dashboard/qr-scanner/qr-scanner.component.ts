@@ -1,81 +1,116 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { QrService } from '../../../../services/qr.service';
 import { BrowserMultiFormatReader } from '@zxing/browser';
+import { NgxScannerQrcodeComponent, NgxScannerQrcodeService, ScannerQRCodeConfig, ScannerQRCodeResult, ScannerQRCodeSelectedFiles } from 'ngx-scanner-qrcode';
 
 @Component({
   selector: 'app-qr-scanner',
   templateUrl: './qr-scanner.component.html',
   styleUrl: './qr-scanner.component.css'
 })
-export class QrScannerComponent {
-  @ViewChild('video') videoElement!: ElementRef<HTMLVideoElement>;
-  @ViewChild('canvas') canvasElement!: ElementRef<HTMLCanvasElement>;
-  qrResult: string | null = null;
+export class QrScannerComponent implements AfterViewInit {
+
   errorMessage: string | null = null;
   qrCodeText: string | null = null;
   showSuccessMessage = false;
 
-  private codeReader: BrowserMultiFormatReader;
-  public scannedResult: string;
-  public imageCaptured: boolean = false; // Flag to track image capture
-
-  constructor(private qrService: QrService) {
-    this.codeReader = new BrowserMultiFormatReader();
-  }
-
-  ngOnInit() {
-    this.startCamera();
-    this.startScanning();
-  }
-
-  startScanning() {
-    const context = this.canvasElement.nativeElement.getContext('2d');
-    if (context) {
-      context.drawImage(this.videoElement.nativeElement, 0, 0, this.canvasElement.nativeElement.width, this.canvasElement.nativeElement.height);
-      this.canvasElement.nativeElement.toBlob((blob) => {
-        if (blob) {
-          this.qrService
-            .decodeFromBlob(blob)
-            .then((text) => {
-              this.qrCodeText = text;
-              this.body.qrCodeTextContent = this.qrCodeText;
-            });
-        }
-      });
-    }
-  }
-
-  startCamera() {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-      .then((stream) => {
-        this.videoElement.nativeElement.srcObject = stream;
-        this.videoElement.nativeElement.play();
-      })
-      .catch((error) => {
-        this.errorMessage = "Cannot access the camera.";
-        console.error("Camera error: ", error);
-      });
-  }
   body = {
     qrCodeTextContent: this.qrCodeText,
   };
-  captureImage() {
-    const context = this.canvasElement.nativeElement.getContext('2d');
-    if (context) {
-      context.drawImage(this.videoElement.nativeElement, 0, 0, this.canvasElement.nativeElement.width, this.canvasElement.nativeElement.height);
-      this.canvasElement.nativeElement.toBlob((blob) => {
-        if (blob) {
-          this.qrService
-            .decodeFromBlob(blob)
-            .then((text) => {
-              this.qrCodeText = text;
-              this.body.qrCodeTextContent = this.qrCodeText;
-              this.showSuccessMessage = true; // Show success message
-            });
-        }
-      });
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia#front_and_back_camera
+  config: ScannerQRCodeConfig = {
+    constraints: {
+      video: {
+        width: window.innerWidth
+      },
+    },
+    // canvasStyles: [
+    //   { /* layer */
+    //     lineWidth: 1,
+    //     fillStyle: '#00950685',
+    //     strokeStyle: '#00950685',
+    //   },
+    //   { /* text */
+    //     font: '17px serif',
+    //     fillStyle: '#ff0000',
+    //     strokeStyle: '#ff0000',
+    //   }
+    // ],
+  };
+
+  public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
+  public qrCodeResult2: ScannerQRCodeSelectedFiles[] = [];
+
+  @ViewChild('action') action!: NgxScannerQrcodeComponent;
+
+  public percentage = 80;
+  public quality = 100;
+
+  constructor(private qrcode: NgxScannerQrcodeService,private qrService: QrService) { }
+
+  ngAfterViewInit(): void {
+    this.action.isReady.subscribe((res: any) => {
+      this.handle(this.action, 'start');
+    });
+  }
+
+  public onEvent(e: ScannerQRCodeResult[], action?: any): void {
+    // e && action && action.pause();
+    console.log(e);
+    this.qrCodeText=e[0].value;
+    this.body.qrCodeTextContent=this.qrCodeText;
+  }
+
+  public handle(action: any, fn: string): void {
+    const playDeviceFacingBack = (devices: any[]) => {
+      // front camera or back camera check here!
+      const device = devices.find(f => (/back|rear|environment/gi.test(f.label))); // Default Back Facing Camera
+      action.playDevice(device ? device.deviceId : devices[0].deviceId);
+    }
+
+    if (fn === 'start') {
+      action[fn](playDeviceFacingBack).subscribe((r: any) => console.log(fn, r), alert);
+    } else {
+      action[fn]().subscribe((r: any) => console.log(fn, r), alert);
     }
   }
+
+  public onDowload(action: NgxScannerQrcodeComponent) {
+    action.download().subscribe(console.log, alert);
+  }
+
+  public onSelects(files: any) {
+    this.qrcode.loadFiles(files, this.percentage, this.quality).subscribe((res: ScannerQRCodeSelectedFiles[]) => {
+      this.qrCodeResult = res;
+    });
+  }
+
+  public onSelects2(files: any) {
+    this.qrcode.loadFilesToScan(files, this.config, this.percentage, this.quality).subscribe((res: ScannerQRCodeSelectedFiles[]) => {
+      console.log(res);
+      this.qrCodeResult2 = res;
+    });
+  }
+
+  public onGetConstraints() {
+    const constrains = this.action.getConstraints();
+    console.log(constrains);
+  }
+  
+  public applyConstraints() {
+    const constrains = this.action.applyConstraints({
+      ...this.action.getConstraints(),
+      width: 510
+    });
+    console.log(constrains);
+  }
+
+
+
+
+
+
 
 
   ConfirmSubscriberAttendance() {
