@@ -30,6 +30,10 @@ export class DashboardHomeComponent implements OnInit {
     private translate: TranslateService,
     private route: ActivatedRoute
   ) {
+  
+  }
+  ngOnInit() {
+debugger;
     this.selectedLanguage = localStorage.getItem('selectedLanguage');
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
@@ -37,14 +41,11 @@ export class DashboardHomeComponent implements OnInit {
       this.translate.use(savedLanguage);
     } else {
       this.translate.setDefaultLang('en');
-
-      const htmlTag = document.documentElement;
-      htmlTag.lang = this.selectedLanguage;
-      htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
-
     }
-  }
-  ngOnInit() {
+    const htmlTag = document.documentElement;
+    htmlTag.lang = this.selectedLanguage;
+    htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
+
     // this.componentType = SubscribersComponent; // Set the component type to ChildComponent
     this.route.params.subscribe(params => {
       const componentName = params['componentName'];

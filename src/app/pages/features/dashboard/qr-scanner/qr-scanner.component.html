@@ -13,23 +13,25 @@
   <p *ngIf="action.isLoading">⌛ Loading...</p>
   <br>
 
-  <div class="button-container">
-    <button (click)="ConfirmSubscriberAttendance()">Confirm</button>
-  </div>
-
-  <div *ngIf="showSuccessMessage" class="result">
-    <h4>QR Code Content:</h4>
-    <p>{{ qrCodeText }}</p>
-  </div>
-  <!-- <div *ngIf="showSuccessMessage" class="success-message">
+  <!-- <div *ngIf="showSuccessMessage" class="result">
     <h4>QR Code Content:</h4>
     <p>{{ qrCodeText }}</p>
   </div> -->
+  <div *ngIf="qrCodeText" class="result">
+    <h4>QR Code Content:</h4>
+    <p>{{ qrCodeText }}</p>
+  </div>
   <div *ngIf="errorMessage" class="error">
     <h4>Error:</h4>
     <p>{{ errorMessage }}</p>
   </div>
 
-  <p *ngIf="qrCodeText">QR Code Content: {{ qrCodeText }}</p>
+  <div *ngIf="showSuccessMessage" class="success-message">
+    <h4>Subscription Confirmed</h4>
+  </div>
 
+  <div class="button-container">
+    <button (click)="ConfirmSubscriberAttendance()">Confirm</button>
+  </div>
+  
 </div>

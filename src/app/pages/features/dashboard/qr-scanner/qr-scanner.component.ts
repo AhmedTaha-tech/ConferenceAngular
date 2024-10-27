@@ -25,18 +25,6 @@ export class QrScannerComponent implements AfterViewInit {
         width: window.innerWidth
       },
     },
-    // canvasStyles: [
-    //   { /* layer */
-    //     lineWidth: 1,
-    //     fillStyle: '#00950685',
-    //     strokeStyle: '#00950685',
-    //   },
-    //   { /* text */
-    //     font: '17px serif',
-    //     fillStyle: '#ff0000',
-    //     strokeStyle: '#ff0000',
-    //   }
-    // ],
   };
 
   public qrCodeResult: ScannerQRCodeSelectedFiles[] = [];
@@ -60,6 +48,7 @@ export class QrScannerComponent implements AfterViewInit {
     console.log(e);
     this.qrCodeText=e[0].value;
     this.body.qrCodeTextContent=this.qrCodeText;
+    this.errorMessage=''
   }
 
   public handle(action: any, fn: string): void {
@@ -107,12 +96,6 @@ export class QrScannerComponent implements AfterViewInit {
   }
 
 
-
-
-
-
-
-
   ConfirmSubscriberAttendance() {
     if (this.qrCodeText != '') {
       this.qrService.ConfirmSubscriberAttendance(this.body).subscribe(
@@ -120,6 +103,8 @@ export class QrScannerComponent implements AfterViewInit {
           if (response.status_code == 200) {
             console.log('QR Code scanned successfully!', response);
             this.showSuccessMessage = true; // Show success message
+            this.qrCodeText=''
+            this.errorMessage=''
             this.hideSuccessMessageAfterDelay(); // Call the method to hide it after a delay
           }
           else
@@ -127,6 +112,7 @@ export class QrScannerComponent implements AfterViewInit {
         },
         (error) => {
           console.error('Error in QR Code Scanner :', error);
+          this.errorMessage="Error "
         }
       );
     }
