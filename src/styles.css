@@ -162,6 +162,58 @@
     line-height: 1.5rem;
   }
 }
+.fit-content-width {
+  width: fit-content;
+}
+
+.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: auto;
+  min-height: fit-content;
+}
+.custom-radio .form-control {
+  min-height: fit-content;
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 0;
+  max-width: fit-content;
+  background: transparent;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.video-container {
+  background-color: var(--bs-white);
+  border-radius: 0.375rem;
+  padding: 1em;
+  position: relative;
+}
+.video-container::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-inline-start: 2px solid var(--primary-color);
+  border-block-end: 2px solid var(--primary-color);
+  inset-inline-start: 0;
+  bottom: 0;
+}
+.video-container::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-inline-end: 2px solid var(--primary-color);
+  border-block-start: 2px solid var(--primary-color);
+  inset-inline-end: 0;
+  top: 0;
+}
+
 /*End Global */
 
 /* Start auth*/
@@ -463,4 +515,86 @@
 /* Font color */
 input.mat-input-element {
   color: white;
+}
+
+.loader-paternt {
+  background-color: var(--bs-white);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1090;
+}
+.load-container {
+  position: relative;
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  letter-spacing: normal;
+}
+
+.one .loader,
+.one .loader:before,
+.one .loader:after {
+  background-color: var(--primary-color); /* アイコンの色 */
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.one .loader:before,
+.one .loader:after {
+  position: absolute;
+  top: 0;
+  content: "";
+}
+.one .loader:before {
+  left: -1.5em;
+}
+.one .loader {
+  font-size: 10px; /* アイコンのサイズ */
+  text-indent: -9999em;
+  margin: 4.3em auto;
+  position: relative;
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.one .loader:after {
+  left: 1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0 var(--primary-color); /* アイコンの色 */
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em var(--primary-color); /* アイコンの色 */
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0 var(--primary-color); /* アイコンの色 */
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em var(--primary-color); /* アイコンの色 */
+    height: 5em;
+  }
 }
