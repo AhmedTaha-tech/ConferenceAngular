@@ -18,6 +18,7 @@
 "PhoneNumber":"رقم الجوال",
 "Enterphonenumber" : "ادخل رقم الجوال",
 "PhoneNumberisrequired" : "رقم الجوال مطلوب",
+"Pleaseenteravalidphonenumber" : "من فضلك ادخل صيفة جوال صحيحة 5XXXXXXXX",
 "MobileExists":"رقم الجوال مسجل من قبل",
 
 "CreatedAt":"تاريخ التسجل",
@@ -29,6 +30,7 @@
   "DashBoardConferences":{
     "Subscribers":"المشتركين",
     "Search":"بحــــــث",
-    "clear":"اعادة تعيين"
+    "clear":"اعادة تعيين",
+    "Attendance":"تم الحضور"
   }
 }

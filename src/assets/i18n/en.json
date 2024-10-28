@@ -19,6 +19,7 @@
     "PhoneNumber":"Phone Number",
     "Enterphonenumber" : "Enter Phone Number",
     "PhoneNumberisrequired" : "Phone Number is required",
+    "Pleaseenteravalidphonenumber" : "Please enter a valid phone number 5XXXXXXXX",
     "MobileExists":"Mobile Already exists",
     "CreatedAt":"Subscribe Date",
     "subscribe": "Subscribe"
@@ -29,6 +30,7 @@
   "DashBoardConferences":{
     "Subscribers":"Subscribers",
     "Search":"Search",
-    "clear":"clear"
+    "clear":"clear",
+    "Attendance":"Attendance"
   }
 }

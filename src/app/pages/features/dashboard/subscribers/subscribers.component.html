@@ -129,6 +129,18 @@
                     }}</label>
                   </div>
                 </div>
+
+                <div class="col-xl-4 col-md-6">
+                  <div class="form-floating mb-3">
+                      <mat-label>Attendance : </mat-label>
+                      <mat-radio-group class="form-control" formControlName="attendance" id="attendance">
+                        <mat-radio-button value="1">All</mat-radio-button>
+                        <mat-radio-button value="2">Attend</mat-radio-button>
+                        <mat-radio-button value="3">Absent</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+                </div>
+
               </div>
               <div class="row justify-content-center g-3">
                 <div class="col-xl-2 col-6">
@@ -206,6 +218,16 @@
                 </th>
                 <td mat-cell *matCellDef="let element">
                   {{ element.createdAt | date }}
+                </td>
+              </ng-container>
+
+              <!-- Attendance Column -->
+              <ng-container matColumnDef="attendance">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  {{"DashBoardConferences.Attendance"|translate}}
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.attendance }}
                 </td>
               </ng-container>
 

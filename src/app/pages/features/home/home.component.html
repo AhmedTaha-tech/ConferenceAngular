@@ -9,8 +9,8 @@
             alt=""
           />
         </a>
-        <button class="btn btn-lang">
-          عربي
+        <button class="btn btn-lang" (click)="switchLanguage()">
+          {{ "header.selectedLanguage" | translate }}
           <svg
             width="18"
             height="18

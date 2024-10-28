@@ -23,6 +23,7 @@ export class SubscribersComponent  {
     'email',
     'phoneNumber',
     'createdAt',
+    'attendance'
   ];
   isCollapsed: boolean = false;
 
@@ -66,8 +67,9 @@ export class SubscribersComponent  {
       email: [null],
       phoneNumber: [null],
       createdAt: [null],
+      attendance:[null]
     });
-    this.fetchData(0, 10, null, null, null, null, null); // Initial fetch with first page and page size 10
+    this.fetchData(0, 10, null, null, null, null, null,null); // Initial fetch with first page and page size 10
   }
 
   fetchData(
@@ -77,7 +79,8 @@ export class SubscribersComponent  {
     lastName?: string | null,
     email?: string | null,
     phoneNumber?: string | null,
-    createdAt?: string | null
+    createdAt?: string | null,
+    attendance?: string | null
   ): void {
     this.subscriptions.push(
       this.dashboardhomeService
@@ -88,7 +91,8 @@ export class SubscribersComponent  {
           lastName,
           email,
           phoneNumber,
-          createdAt
+          createdAt,
+          attendance
         )
         .subscribe(
           (response) => {
@@ -113,7 +117,8 @@ export class SubscribersComponent  {
       searchCriteria.lastName,
       searchCriteria.email,
       searchCriteria.createdAt,
-      searchCriteria.phoneNumber
+      searchCriteria.phoneNumber,
+      searchCriteria.attendance
     );
   }
 
@@ -133,7 +138,8 @@ export class SubscribersComponent  {
         preparedData.lastName,
         preparedData.email,
         preparedData.phoneNumber,
-        preparedData.createdAt
+        preparedData.createdAt,
+        preparedData.attendance
       );
       // const filterValue = this.searchForm.value;
       // this.dataSource.filter = JSON.stringify(filterValue);

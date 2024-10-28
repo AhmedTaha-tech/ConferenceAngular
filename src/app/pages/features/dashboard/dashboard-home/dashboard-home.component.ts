@@ -1,11 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DashboardHomeService } from '../../../../services/dashboard-home.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { GetClientsSubscribed } from '../../../../model/dashboard/GetClientsSubscribed';
-import { Subscription } from 'rxjs';
-import { UtilityService } from '../../../../services/utility.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SubscribersComponent } from '../subscribers/subscribers.component';
@@ -29,11 +22,9 @@ export class DashboardHomeComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     private route: ActivatedRoute
-  ) {
-  
-  }
+  ) {}
+
   ngOnInit() {
-debugger;
     this.selectedLanguage = localStorage.getItem('selectedLanguage');
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {
@@ -47,8 +38,10 @@ debugger;
     htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
 
     // this.componentType = SubscribersComponent; // Set the component type to ChildComponent
-    this.route.params.subscribe(params => {
-      const componentName = params['componentName'];
+    this.route.params.subscribe((params) => {
+      let componentName = params['componentName'];
+      if(componentName=='home') 
+        componentName='subscribers';
       this.setComponent(componentName); // Set the component type based on the route parameter
     });
   }
@@ -59,10 +52,10 @@ debugger;
   toggleAside() {
     this.isCollapsed = !this.isCollapsed;
   }
-  Logout(){
+  Logout() {
     this.router.navigate(['']);
   }
-  switchLanguage(lang: string) {
+  switchLanguage() {
     // Toggle language
     this.selectedLanguage = this.selectedLanguage === 'ar' ? 'en' : 'ar';
 
@@ -77,5 +70,4 @@ debugger;
 
     console.log('Language set to =>', this.selectedLanguage);
   }
-
 }

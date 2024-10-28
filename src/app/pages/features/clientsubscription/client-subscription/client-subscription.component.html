@@ -147,7 +147,7 @@
                             formControlName="phoneNumber"
                             placeholder="{{
                               'ClientSubscription.Enterphonenumber' | translate
-                            }}"
+                            }} 5XXXXXXXX"
                             class="phone-number-input"
                           />
                         </div>
@@ -162,6 +162,18 @@
                               | translate
                           }}
                         </mat-error>
+
+                        <mat-error
+                          *ngIf="
+                            addForm.get('phoneNumber')?.hasError('pattern')
+                          "
+                        >
+                          {{
+                            "ClientSubscription.Pleaseenteravalidphonenumber"
+                              | translate
+                          }}
+                        </mat-error>
+
                       </mat-form-field>
                     </div>
                   </div>

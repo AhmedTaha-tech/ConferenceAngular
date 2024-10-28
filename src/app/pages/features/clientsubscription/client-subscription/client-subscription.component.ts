@@ -61,7 +61,7 @@ export class ClientSubscriptionComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       countryCode: [this.selectedCountryCode, Validators.required],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: ['', [Validators.required,Validators.pattern(/^5[0-9]{8}$/)]],
     });
 
     // Listen for country code changes
@@ -72,9 +72,10 @@ export class ClientSubscriptionComponent implements OnInit {
   isLoading = false;
   onSubmit() {
     if (this.addForm.valid) {
+      this.isLoading = true;
       // Combine country code with phone number before sending the request
       const formValue = this.addForm.value;
-      formValue.phoneNumber = this.selectedCountryCode + formValue.phoneNumber;
+      formValue.phoneNumber = /*this.selectedCountryCode +*/ formValue.phoneNumber;
 
       this.clientSubscriptService
         .AddConferenceSubscription(formValue)
@@ -86,6 +87,7 @@ export class ClientSubscriptionComponent implements OnInit {
             } else {
               this.router.navigate(['/clientsubscription/error']);
             }
+            this.isLoading = false;
           },
           (error) => {
             console.error('Error adding user:', error);
@@ -94,23 +96,22 @@ export class ClientSubscriptionComponent implements OnInit {
               error.error.CustomErrors.length > 0
             ) {
               if (error.error.CustomErrors[0].ErrorDescription == 'EmailExists')
-                this.translateMessage('EmailExists');
+                this.translate.get('ClientSubscription.EmailExists').subscribe((translation: string) => {
+                  this.errorMessage = translation;
+                });
               if (
                 error.error.CustomErrors[0].ErrorDescription == 'MobileExists'
               )
-                this.translateMessage('MobileExists');
+              this.translate.get('ClientSubscription.MobileExists').subscribe((translation: string) => {
+                this.errorMessage = translation;
+              });
             } else this.router.navigate(['/clientsubscription/error']);
+            this.isLoading = false;
           }
         );
     } else {
       this.checkFormErrors();
     }
-    this.isLoading = true;
-
-    // Simulate an async operation (like an HTTP request)
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3000); // Adjust the timeout or replace it with your actual logic
   }
 
   checkFormErrors() {

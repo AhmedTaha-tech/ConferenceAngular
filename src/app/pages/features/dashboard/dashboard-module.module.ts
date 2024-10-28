@@ -16,8 +16,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../../../app.module';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
-import { BrowserModule } from '@angular/platform-browser';
 import { SubscribersComponent } from './subscribers/subscribers.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,SubscribersComponent],
@@ -37,9 +37,8 @@ import { SubscribersComponent } from './subscribers/subscribers.component';
     NgxScannerQrcodeModule,
 
     FormsModule,
-    BrowserModule, 
     NgxScannerQrcodeModule, 
-    
+    MatRadioModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

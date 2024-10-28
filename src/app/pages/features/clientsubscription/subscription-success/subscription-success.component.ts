@@ -18,12 +18,10 @@ export class SubscriptionSuccessComponent {
       this.translate.use(savedLanguage);
     } else {
       this.translate.setDefaultLang('en');
-
-      const htmlTag = document.documentElement;
-      htmlTag.lang = this.selectedLanguage;
-      htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
-
     }
+    const htmlTag = document.documentElement;
+    htmlTag.lang = this.selectedLanguage;
+    htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
   }
   switchLanguage() {
     // Toggle language
