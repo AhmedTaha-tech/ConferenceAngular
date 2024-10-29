@@ -51,32 +51,43 @@
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="d-grid mb-2">
                   <mat-form-field appearance="outline">
-                    <mat-label>Username</mat-label>
+                    <mat-label>{{
+                      "login.UserName" | translate
+                    }}</mat-label>
                     <input
                       matInput
                       formControlName="Username"
-                      placeholder="Enter user name"
+                      placeholder="{{
+                        'login.Enterusername' | translate
+                      }}"
                     />
                     <mat-error
-                      *ngIf="loginForm.get('username')?.hasError('required')"
+                      *ngIf="loginForm.get('Username')?.hasError('required')"
                     >
-                      Last name is required
+                      {{
+                        "login.usernameisrequired" | translate
+                      }}
                     </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="d-grid mb-2">
                   <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
+                    <mat-label>{{
+                      "login.password" | translate
+                    }}</mat-label>
                     <input
                       matInput
                       formControlName="Password"
-                      placeholder="Enter Password"
-                      type="password"
+                      placeholder="{{
+                        'login.password' | translate
+                      }}"
                     />
                     <mat-error
-                      *ngIf="loginForm.get('password')?.hasError('password')"
+                      *ngIf="loginForm.get('Password')?.hasError('required')"
                     >
-                      Password
+                      {{
+                        "login.passwordisrequired" | translate
+                      }}
                     </mat-error>
                   </mat-form-field>
                 </div>
@@ -91,29 +102,27 @@
                     [disabled]="!loginForm.valid"
                   >
                     Login
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      version="1.1"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      width="18"
-                      height="18"
-                      x="0"
-                      y="0"
-                      viewBox="0 0 512 512"
-                      style="enable-background: new 0 0 512 512"
-                      xml:space="preserve"
-                      class=""
-                    >
-                      <g>
+                    <!-- Conditionally show the SVG or the spinner -->
+                    <ng-container *ngIf="!isLoading; else spinner">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 512 512"
+                        style="enable-background: new 0 0 512 512"
+                      >
                         <path
                           d="M502.628 278.627 389.25 392.005c-6.249 6.249-14.438 9.373-22.628 9.373s-16.379-3.124-22.628-9.373c-12.496-12.497-12.496-32.758 0-45.255L402.745 288H32c-17.673 0-32-14.327-32-32s14.327-32 32-32h370.745l-58.751-58.75c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0l113.378 113.378c12.496 12.496 12.496 32.758 0 45.254z"
                           fill="currentColor"
-                          opacity="1"
-                          data-original="currentColor"
-                          class=""
                         ></path>
-                      </g>
-                    </svg>
+                      </svg>
+                    </ng-container>
+
+                    <ng-template #spinner>
+                      <div class="spinner-border custom-spinner" role="status">
+                        <span class="sr-only"></span>
+                      </div>
+                    </ng-template>
                   </button>
                 </div>
               </form>

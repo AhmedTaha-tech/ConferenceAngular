@@ -20,7 +20,7 @@ import { SubscribersComponent } from './subscribers/subscribers.component';
 import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
-  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,SubscribersComponent],
+  declarations: [DashboardLoginComponent,DashboardHomeComponent,QrScannerComponent,SubscribersComponent,DashboardLoginComponent],
   imports: [
     CommonModule,
     MatTableModule,

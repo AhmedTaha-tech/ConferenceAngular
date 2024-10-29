@@ -32,5 +32,9 @@
     "Search":"بحــــــث",
     "clear":"اعادة تعيين",
     "Attendance":"تم الحضور"
+  },
+  "scanner":{
+    "confirm":"تأكيد",
+    "attendanceAlreadyConfirmed":"تم تأكيد الحضور من قبل"
   }
 }

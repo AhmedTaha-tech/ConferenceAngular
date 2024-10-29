@@ -4,14 +4,15 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { DashboardLoginComponent } from './dashboard-login/dashboard-login.component';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { SubscribersComponent } from './subscribers/subscribers.component';
+import { authGuard } from '../../../core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '',component: DashboardHomeComponent},
-  { path: 'dashoard/:componentName', component: DashboardHomeComponent },
-  { path: 'dashoard/home',component: DashboardHomeComponent, pathMatch: 'full'},
-  { path: 'dashoard/subscribers',component: SubscribersComponent},
-  { path: 'dashoard/login', component: DashboardLoginComponent },
-  { path: 'dashoard/scanner', component: QrScannerComponent },
+  { path: 'dashboard/:componentName', component: DashboardHomeComponent,canActivate: [authGuard] },
+  { path: 'dashboard/home',component: DashboardHomeComponent, pathMatch: 'full',canActivate: [authGuard]},
+  { path: 'dashboard/subscribers',component: SubscribersComponent,canActivate: [authGuard]},
+  { path: 'dashboardlogin', component: DashboardLoginComponent },
+  { path: 'dashboard/scanner', component: QrScannerComponent,canActivate: [authGuard] },
 
 ];
 

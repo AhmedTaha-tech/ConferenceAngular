@@ -6,8 +6,8 @@
     "Firstnameisrequired" : "First Name is required",
     
     "LastName":"Last Name",
-    "Enterlastname" : "Enter Lastt Name",
-    "Lastnameisrequired" : "Last Nameis required",
+    "Enterlastname" : "Enter Last Name",
+    "Lastnameisrequired" : "Last Name is required",
     
     "Email":"Email",
     "Enteremail" : "Enter Email",
@@ -24,6 +24,15 @@
     "CreatedAt":"Subscribe Date",
     "subscribe": "Subscribe"
   },
+  "login":{
+    "username":"User Name",
+    "enterusername" : "Enter User Name",
+    "usernameisrequired" : "User Name is required", 
+
+    "password":"User Name",
+    "pnterpassword" : "Enter Password",
+    "passwordisrequired" : "Password is required"
+  },
   "header":{
     "selectedLanguage":"العربية"
   },
@@ -32,5 +41,9 @@
     "Search":"Search",
     "clear":"clear",
     "Attendance":"Attendance"
+  },
+  "scanner":{
+    "confirm":"Confirm",
+    "attendanceAlreadyConfirmed":"Attendance Already Confirmed before"
   }
 }

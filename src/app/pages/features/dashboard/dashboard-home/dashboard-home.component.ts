@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SubscribersComponent } from '../subscribers/subscribers.component';
 import { QrScannerComponent } from '../qr-scanner/qr-scanner.component';
+import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -21,7 +22,8 @@ export class DashboardHomeComponent implements OnInit {
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auth : AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class DashboardHomeComponent implements OnInit {
     this.isCollapsed = !this.isCollapsed;
   }
   Logout() {
+    this.auth.logout();
     this.router.navigate(['']);
   }
   switchLanguage() {
