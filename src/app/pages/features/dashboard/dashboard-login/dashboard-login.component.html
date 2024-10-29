@@ -5,8 +5,8 @@
         <div class="img-container"></div>
       </div>
       <div class="col-lg-7 col-xl-8 h-100">
-        <button class="btn btn-lang">
-          عربي
+        <button class="btn btn-lang" (click)="switchLanguage()">
+          {{ "header.selectedLanguage" | translate }}
           <svg
             width="18"
             height="18
@@ -52,13 +52,13 @@
                 <div class="d-grid mb-2">
                   <mat-form-field appearance="outline">
                     <mat-label>{{
-                      "login.UserName" | translate
+                      "login.username" | translate
                     }}</mat-label>
                     <input
                       matInput
                       formControlName="Username"
                       placeholder="{{
-                        'login.Enterusername' | translate
+                        'login.enterusername' | translate
                       }}"
                     />
                     <mat-error
@@ -79,7 +79,7 @@
                       matInput
                       formControlName="Password"
                       placeholder="{{
-                        'login.password' | translate
+                        'login.enterpassword' | translate
                       }}"
                     />
                     <mat-error
@@ -101,7 +101,7 @@
                     class="btn btn-lg btn-primary"
                     [disabled]="!loginForm.valid"
                   >
-                    Login
+                    {{'login.login'|translate}}
                     <!-- Conditionally show the SVG or the spinner -->
                     <ng-container *ngIf="!isLoading; else spinner">
                       <svg

@@ -24,6 +24,16 @@
 "CreatedAt":"تاريخ التسجل",
 "subscribe": "اشتراك"
   },
+  "login":{
+    "username":"اسم المستخدم",
+    "enterusername" : "ادخل اسم المستخدم",
+    "usernameisrequired" : "اسم المستخدم مطلوب", 
+
+    "password":"الرقم السرى",
+    "enterpassword" : "ادخل الرقم السرى",
+    "passwordisrequired" : "الرقم السرى مطلوب",
+    "login":"تسجيل دخول"
+  },
   "header":{
     "selectedLanguage":"English"
   },

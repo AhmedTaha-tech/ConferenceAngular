@@ -15,12 +15,14 @@ export class DashboardLoginComponent {
   loginForm!: FormGroup;
   errorMessage: string = '';
   isLoading = false;
+  selectedLanguage: any = '';
+
   constructor(
     private fb: FormBuilder,
     private dashboardLoginService: DashboardLoginService,
     private router: Router,
     private auth : AuthenticationService,
-    private translate: TranslateService
+    private translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +30,18 @@ export class DashboardLoginComponent {
       Username: ['', [Validators.required]],
       Password: ['', [Validators.required]],
     });
+
+    this.selectedLanguage = localStorage.getItem('selectedLanguage');
+  const savedLanguage = localStorage.getItem('selectedLanguage');
+  if (savedLanguage) {
+    this.selectedLanguage = savedLanguage;
+    this.translate.use(savedLanguage);
+  } else {
+    this.translate.setDefaultLang('en');
+  }
+  const htmlTag = document.documentElement;
+  htmlTag.lang = this.selectedLanguage;
+  htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
   }
 
   onSubmit() {
@@ -52,4 +66,21 @@ export class DashboardLoginComponent {
       );
     }
   }
+
+switchLanguage() {
+  // Toggle language
+  this.selectedLanguage = this.selectedLanguage === 'ar' ? 'en' : 'ar';
+
+  // Set the selected language in the translate service and localStorage
+  this.translate.use(this.selectedLanguage);
+  localStorage.setItem('selectedLanguage', this.selectedLanguage);
+
+  // Update HTML lang and direction attributes
+  const htmlTag = document.documentElement;
+  htmlTag.lang = this.selectedLanguage;
+  htmlTag.dir = this.selectedLanguage === 'ar' ? 'rtl' : 'ltr';
+
+  console.log('Language set to =>', this.selectedLanguage);
+}
+
 }

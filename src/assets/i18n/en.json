@@ -29,9 +29,10 @@
     "enterusername" : "Enter User Name",
     "usernameisrequired" : "User Name is required", 
 
-    "password":"User Name",
-    "pnterpassword" : "Enter Password",
-    "passwordisrequired" : "Password is required"
+    "password":"Password",
+    "enterpassword" : "Enter Password",
+    "passwordisrequired" : "Password is required",
+    "login":"Login"
   },
   "header":{
     "selectedLanguage":"العربية"
