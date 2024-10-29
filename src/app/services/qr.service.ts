@@ -54,7 +54,7 @@ export class QrService {
   });
   
   ConfirmSubscriberAttendance(body: any): Observable<any> {
-    return this.http.post("https://localhost:44336/api/v1/ConfirmSubscriberAttendance", body);
+    return this.http.post(`${DashboardHomeService.urlApi}ConfirmSubscriberAttendance`, body);
   }
 
     
