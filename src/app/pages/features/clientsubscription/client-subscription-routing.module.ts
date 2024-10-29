@@ -6,8 +6,8 @@ import { SubscriptionSuccessComponent } from './subscription-success/subscriptio
 
 const routes: Routes = [
   { path: '',component: ClientSubscriptionComponent, },
-  { path: 'clientsubscription/success', component: SubscriptionSuccessComponent },
-  { path: 'clientsubscription/error', component: SubscriptionErrorComponent },
+  { path: 'success', component: SubscriptionSuccessComponent },
+  { path: 'error', component: SubscriptionErrorComponent },
 ];
 
 @NgModule({
