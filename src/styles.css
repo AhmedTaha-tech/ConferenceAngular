@@ -317,6 +317,10 @@
       }
     }
   }
+  .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
   .main-contet {
     padding-inline-start: 240px;
     width: 100%;
