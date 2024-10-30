@@ -1,9 +1,5 @@
 <main [ngClass]="{ collapsed: isCollapsed }" class="main-wrapper">
-  <aside
-    class="side-nav offcanvas-lg offcanvas-start"
-    tabindex="-1"
-    id="offcanvasResponsive"
-  >
+  <aside class="side-nav d-none d-lg-block">
     <div class="side-nav-header">
       <a class="navbar-brand" href="#">
         <img
@@ -16,7 +12,13 @@
     <div class="side-nav-body">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" [routerLink]="['/dashboard/subscribers']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/dashboard/subscribers']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
             <span class="icon">
               <svg
                 viewBox="0 0 24 24"
@@ -32,11 +34,94 @@
                 />
               </svg>
             </span>
-            <span class="text"> {{"DashBoardConferences.Subscribers"|translate}} </span>
+            <span class="text">
+              {{ "DashBoardConferences.Subscribers" | translate }}
+            </span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/dashboard/scanner']" routerLinkActive="active">
+          <a
+            class="nav-link"
+            [routerLink]="['/dashboard/scanner']"
+            routerLinkActive="active"
+          >
+            <span class="icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 3V21M7.8 3H16.2C17.8802 3 18.7202 3 19.362 3.32698C19.9265 3.6146 20.3854 4.07354 20.673 4.63803C21 5.27976 21 6.11984 21 7.8V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C18.7202 21 17.8802 21 16.2 21H7.8C6.11984 21 5.27976 21 4.63803 20.673C4.07354 20.3854 3.6146 19.9265 3.32698 19.362C3 18.7202 3 17.8802 3 16.2V7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3Z"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="text"> QR Scanner </span></a
+          >
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <aside
+    class="side-nav offcanvas offcanvas-lg offcanvas-start"
+    tabindex="-1"
+    id="offcanvasResponsive"
+  >
+    <div class="side-nav-header">
+      <a class="navbar-brand" href="#">
+        <img
+          class="logo"
+          src="../../../../../assets/images/logo-main.svg"
+          alt=""
+        />
+      </a>
+    </div>
+    <div class="side-nav-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/dashboard/subscribers']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            type="button"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <span class="icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 3V21M7.8 3H16.2C17.8802 3 18.7202 3 19.362 3.32698C19.9265 3.6146 20.3854 4.07354 20.673 4.63803C21 5.27976 21 6.11984 21 7.8V16.2C21 17.8802 21 18.7202 20.673 19.362C20.3854 19.9265 19.9265 20.3854 19.362 20.673C18.7202 21 17.8802 21 16.2 21H7.8C6.11984 21 5.27976 21 4.63803 20.673C4.07354 20.3854 3.6146 19.9265 3.32698 19.362C3 18.7202 3 17.8802 3 16.2V7.8C3 6.11984 3 5.27976 3.32698 4.63803C3.6146 4.07354 4.07354 3.6146 4.63803 3.32698C5.27976 3 6.11984 3 7.8 3Z"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="text">
+              {{ "DashBoardConferences.Subscribers" | translate }}
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/dashboard/scanner']"
+            routerLinkActive="active"
+            type="button"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
             <span class="icon">
               <svg
                 viewBox="0 0 24 24"
@@ -160,7 +245,9 @@
         </button>
       </div>
     </nav>
-    <ng-container *ngComponentOutlet="componentType"></ng-container> <!-- Dynamic Component Outlet -->
+
+    <ng-container *ngComponentOutlet="componentType"></ng-container>
+    <!-- Dynamic Component Outlet -->
     <footer class="footer">
       <p>All Rights Reserved. Powered by <strong>MALQAA</strong></p>
     </footer>
