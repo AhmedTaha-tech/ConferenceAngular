@@ -155,7 +155,8 @@ export class SubscribersComponent  {
         preparedData.lastName,
         preparedData.email,
         preparedData.phoneNumber,
-        preparedData.createdAt
+        preparedData.createdAt,
+        preparedData.attendance
       );
     }
   }
@@ -182,7 +183,8 @@ export class SubscribersComponent  {
     lastName?: string | null,
     email?: string | null,
     phoneNumber?: string | null,
-    createdAt?: string | null
+    createdAt?: string | null,
+    attendance?: string | null
   ): void {
     this.subscriptions.push(
       this.dashboardhomeService
@@ -191,7 +193,8 @@ export class SubscribersComponent  {
           lastName,
           email,
           phoneNumber,
-          createdAt
+          createdAt,
+          attendance
         )
         .subscribe(
           (response) => {

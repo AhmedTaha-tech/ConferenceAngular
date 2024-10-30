@@ -55,7 +55,8 @@ export class DashboardHomeService {
     lastName?: string | null,
     email?: string | null,
     phoneNumber?: string | null,
-    createdAt?: string | null
+    createdAt?: string | null,
+    attendance?: string | null
   ): Observable<any> {
     this.filterParam=''
     let params = new HttpParams();
@@ -73,6 +74,9 @@ export class DashboardHomeService {
     }
     if (createdAt != null && createdAt != undefined) {
       this.filterParam += `&CreatedAt=${createdAt}`;
+    }
+    if (attendance != null && attendance != undefined) {
+      this.filterParam += `&Attendance=${attendance}`;
     }
     return this.http.get(`${DashboardHomeService.urlApi}GetClientsSubscribedReport?${this.filterParam}`);
   }
