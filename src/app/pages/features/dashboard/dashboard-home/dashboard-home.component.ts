@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SubscribersComponent } from '../subscribers/subscribers.component';
 import { QrScannerComponent } from '../qr-scanner/qr-scanner.component';
 import { AuthenticationService } from '../../../../services/authentication.service';
+import { LocalStorageService } from '../../../../services/local-storage.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -14,6 +15,7 @@ export class DashboardHomeComponent implements OnInit {
   componentType: any; // Variable to hold the child component type
   selectedLanguage: any = '';
   isCollapsed: boolean = false;
+  userFullName:string='';
   componentMap = {
     subscribers: SubscribersComponent,
     scanner: QrScannerComponent,
@@ -23,10 +25,13 @@ export class DashboardHomeComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     private route: ActivatedRoute,
-    private auth : AuthenticationService
+    private auth : AuthenticationService,
+    private localStorage:LocalStorageService
   ) {}
 
   ngOnInit() {
+    this.userFullName= this.localStorage.retrieveFirstNameFromLocalStorage() + ' ' + this.localStorage.retrieveLastNameFromLocalStorage();
+    
     this.selectedLanguage = localStorage.getItem('selectedLanguage');
     const savedLanguage = localStorage.getItem('selectedLanguage');
     if (savedLanguage) {

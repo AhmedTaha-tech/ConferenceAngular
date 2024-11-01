@@ -16,14 +16,35 @@ export class LocalStorageService {
     return this.removeItem('UserId');
   }
 
-  setUserNameInLocalStorage(UserName:string) {
-    return this.setItem('UserName',UserName);
+  setUserNameInLocalStorage(userName:string) {
+    return this.setItem('UserName',userName);
   } 
   retrieveUserNameFromLocalStorage() {
     return this.getItem('UserName')??"";
   } 
   removeUserNameFromLocalStorage(){
     return this.removeItem('UserName');
+  }
+
+  setFirstNameInLocalStorage(firstName:string) {
+    return this.setItem('FirstName',firstName);
+  } 
+  retrieveFirstNameFromLocalStorage() {
+    return this.getItem('FirstName')??"";
+  } 
+  removeFirstNameFromLocalStorage(){
+    return this.removeItem('FirstName');
+  }
+
+
+  setLastNameInLocalStorage(lasttName:string) {
+    return this.setItem('LastName',lasttName);
+  } 
+  retrieveLastNameFromLocalStorage() {
+    return this.getItem('LastName')??"";
+  } 
+  removeLastNameFromLocalStorage(){
+    return this.removeItem('LastName');
   }
 
   setTokenInLocalStorage(token:string) {

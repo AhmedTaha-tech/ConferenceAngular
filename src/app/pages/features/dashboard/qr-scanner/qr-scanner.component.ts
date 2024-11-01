@@ -24,6 +24,7 @@ export class QrScannerComponent implements AfterViewInit {
   isLoading = false;
   body = {
     qrCodeTextContent: this.qrCodeText,
+    confirmed : true
   };
 
   // https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia#front_and_back_camera

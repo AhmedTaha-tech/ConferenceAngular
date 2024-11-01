@@ -12,8 +12,10 @@ export class AuthenticationService {
     return this.localStorage.retrieveUserNameFromLocalStorage()!="";
   }
 
-  login(userName:string, token:string): void {
+  login(userName:string,firstName:string , lastName:string, token:string): void {
     this.localStorage.setUserNameInLocalStorage(userName);
+    this.localStorage.setFirstNameInLocalStorage(firstName);
+    this.localStorage.setLastNameInLocalStorage(lastName);
     this.localStorage.setTokenInLocalStorage(token);
   }
 

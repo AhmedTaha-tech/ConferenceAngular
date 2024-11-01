@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { GetClientsSubscribed } from '../../../../model/dashboard/GetClientsSubscribed';
 import { DashboardHomeService } from '../../../../services/dashboard-home.service';
 import { UtilityService } from '../../../../services/utility.service';
+import { QrService } from '../../../../services/qr.service';
 
 @Component({
   selector: 'app-subscribers',
@@ -31,7 +32,7 @@ export class SubscribersComponent  {
     this.isCollapsed = !this.isCollapsed;
   }
   dataSource = new MatTableDataSource<GetClientsSubscribed>([]);
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   totalRecords = 0;
   pageSize: number = 5;
   subscriptions: Subscription[] = [];
@@ -43,7 +44,8 @@ export class SubscribersComponent  {
     private fb: FormBuilder,
     private utility: UtilityService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private qrService: QrService,
   ) {
     this.selectedLanguage = localStorage.getItem('selectedLanguage');
     const savedLanguage = localStorage.getItem('selectedLanguage');
@@ -98,7 +100,6 @@ export class SubscribersComponent  {
           (response) => {
             this.dataSource = new MatTableDataSource(response.data);
             this.totalRecords = response.totaRecords;
-            this.dataSource.paginator = this.paginator;
           },
           (error) => {
             console.error('Error fetching data from API', error);
@@ -178,6 +179,31 @@ export class SubscribersComponent  {
 
     console.log('Language set to =>', this.selectedLanguage);
   }
+ 
+  body = {
+    qrCodeTextContent: '',
+    confirmed : true
+  };
+  isLoading = false;
+
+  ConfirmSubscriberAttendance(event: Event, element:any): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    this.body.confirmed=checked;
+    this.body.qrCodeTextContent=element.email;
+      this.isLoading=true;
+      this.qrService.ConfirmSubscriberAttendance(this.body).subscribe(
+        (response) => {
+          if (response.status_code == 200) {
+            element.attendance=checked;
+          } 
+          else 
+          this.isLoading=false;
+        },
+        (error) => {
+          this.isLoading=false;
+        }
+      );
+  }
   GetClientsSubscribedReport(
     firstName?: string | null,
     lastName?: string | null,
@@ -186,6 +212,7 @@ export class SubscribersComponent  {
     createdAt?: string | null,
     attendance?: string | null
   ): void {
+    this.isLoading=true;
     this.subscriptions.push(
       this.dashboardhomeService
         .GetClientsSubscribedReport(
@@ -222,9 +249,11 @@ export class SubscribersComponent  {
 
             // Clean up the object URL after the download
             window.URL.revokeObjectURL(url);
+            this.isLoading=false;
           },
           (error) => {
             console.error('Error fetching data from API', error);
+            this.isLoading=false;
           }
         )
     );

@@ -52,7 +52,7 @@ export class DashboardLoginComponent {
           if (response.status_code == 200) {
             console.log('User added successfully!', response);
             this.errorMessage = '';
-            this.auth.login(response.data.userName,response.data.token);
+            this.auth.login(response.data.userName,response.data.firstName,response.data.lastName,response.data.token);
             this.router.navigate(['/dashboard/home']);
           }
           this.errorMessage = 'Invalid username or password. Please try again.';
