@@ -59,7 +59,7 @@ export class DashboardLoginComponent {
           this.isLoading=false;
         },
         (error) => {
-          console.error('Error adding user:', error);
+          console.error('Error login:', error);
           this.errorMessage = 'Invalid username or password. Please try again.';
           this.isLoading=false;
         }
